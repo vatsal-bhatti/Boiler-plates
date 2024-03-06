@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { reducerfunction1 } from "../redux/reducerfinctions/reducerfunction";
+import { reducerfunction1 } from "./reducerfunctions/reducerfunction";
 
 
 const rootReducer = combineReducers({
