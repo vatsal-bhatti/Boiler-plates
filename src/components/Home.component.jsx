@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDispatch,useSelector } from 'react-redux';
+import NavbarHoc from '../Hoc/NavbarHoc.component';
 import { action1 } from '../redux/actions/actions';
 
-export default function Home() {
+ function Home() {
 
     const dispatch = useDispatch();
     const mystate1 = useSelector((state) => state.reducer1);
@@ -16,3 +17,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default NavbarHoc(Home);
