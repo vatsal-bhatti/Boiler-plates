@@ -1,6 +1,9 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoutes/PrivateRoute";
+// import Error404 from "../components/Error404";
+// import Home from "../components/Home";
+// import Layout from "../components/layout/Layout";
 
 const Error404 = React.lazy(() => import("../components/Error404"));
 const Layout = React.lazy(() => import("../components/layout/Layout"));
