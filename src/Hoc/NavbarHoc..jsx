@@ -1,7 +1,5 @@
 
-import Navbar from "../components/Navbar.component"
-
-
+import Navbar from "../components/layout/Navbar/Navbar";
 
 function NavbarHoc (Comp){
 
