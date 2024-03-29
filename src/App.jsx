@@ -16,13 +16,7 @@ function App() {
 
     </Suspense>
       
-      {/* <Routes>
-      <Route index element={<Login />} />
-        <Route path="*" element={<Error404 />} />
-        <Route path="home" element={<Home />} />
-        <Route path="cart" element={<Cart />} />
-
-      </Routes> */}
+    
     </>
   );
 }
