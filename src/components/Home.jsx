@@ -20,7 +20,7 @@ console.log(displayArray);
   return (<div>Home Component
 
 
-<Pagination data={displayArray}  recordsPerPage={20}/> 
+<Pagination data={displayArray}  recordsPerPage={10}/> 
 
 
 
