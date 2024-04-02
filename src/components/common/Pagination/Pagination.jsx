@@ -37,7 +37,8 @@ function Pagination({ recordsPerPage, data }) {
 
   return (
     <>
-      <div>
+      <div className="flex flex-col justify-center items-center ">
+        <div className="h-[100vh] flex flex-col justify-center items-center ">
         {data && data.length ? (
           data
             .slice(firstIndex, lastIndex)
@@ -45,18 +46,11 @@ function Pagination({ recordsPerPage, data }) {
         ) : (
           <div>no data in children</div>
         )}
+        </div>
+        
 
-        <div className="bg-white p-4 flex items-center flex-wrap">
+        <div className="bg-white p-4  flex  flex-wrap items-center justify-center">
           <nav aria-label="Page navigation">
-            {data && data.length ? (
-              data
-                .slice(firstIndex, lastIndex)
-                .map((number, index) => (
-                  <div key={index + 1}>number {number}</div>
-                ))
-            ) : (
-              <div>no data in children</div>
-            )}
             <ul className="inline-flex">
               <li>
                 <Button
@@ -104,7 +98,7 @@ function Pagination({ recordsPerPage, data }) {
                     />
                   </li>
                   <li>
-                  <PageNumber
+                    <PageNumber
                       pageNumber={currentPage + 2}
                       style="hover:bg-green-100"
                     />
@@ -113,19 +107,19 @@ function Pagination({ recordsPerPage, data }) {
               ) : currentPage === lastPage ? (
                 <>
                   <li>
-                  <PageNumber
+                    <PageNumber
                       pageNumber={currentPage - 2}
                       style="hover:bg-green-100"
                     />
                   </li>
                   <li>
-                  <PageNumber
+                    <PageNumber
                       pageNumber={currentPage - 1}
                       style="hover:bg-green-100"
                     />
                   </li>
                   <li>
-                  <PageNumber
+                    <PageNumber
                       pageNumber={currentPage}
                       style="text-white bg-green-600 cursor-default border border-r-0 border-green-600 "
                     />
@@ -134,19 +128,19 @@ function Pagination({ recordsPerPage, data }) {
               ) : (
                 <>
                   <li>
-                  <PageNumber
+                    <PageNumber
                       pageNumber={currentPage - 1}
                       style="hover:bg-green-100"
                     />
                   </li>
                   <li>
-                  <PageNumber
+                    <PageNumber
                       pageNumber={currentPage}
                       style="text-white bg-green-600 cursor-default border border-r-0 border-green-600 "
                     />
                   </li>
                   <li>
-                  <PageNumber
+                    <PageNumber
                       pageNumber={currentPage + 1}
                       style="hover:bg-green-100"
                     />

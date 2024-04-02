@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import NavbarHoc from "../Hoc/NavbarHoc.";
 import { action1 } from "../redux/actions/actions";
 import Loader from "./common/Loader";
+import Card from "./common/Pagination/Card";
 import Pagination from "./common/Pagination/Pagination";
 
 function Home() {
@@ -19,9 +20,17 @@ console.log(displayArray);
 
   return (<div>Home Component
 
+{/* <div className=""><Pagination data={displayArray}  recordsPerPage={10}/> 
+</div> */}
+<div className="gap-5 grid grid-cols-1 lg:grid-cols-2 w-fit p-6 mx-auto">
 
-<Pagination data={displayArray}  recordsPerPage={10}/> 
-
+<Card/>
+<Card/>
+<Card/>
+<Card/>
+<Card/>
+<Card/>
+</div>
 
 
 
