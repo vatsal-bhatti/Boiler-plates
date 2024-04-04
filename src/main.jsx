@@ -9,6 +9,9 @@ import { composeWithDevTools } from "@redux-devtools/extension";
 import { BrowserRouter } from "react-router-dom";
 import { Button } from "./components/common/Button.jsx";
 import "./fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf";
+
+
+
 const store = createStore(rootReducer, composeWithDevTools());
 
 ReactDOM.createRoot(document.getElementById("root")).render(

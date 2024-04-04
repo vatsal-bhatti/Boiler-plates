@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { RegisterSchema, LoginSchema } from "./Schemas/Schemas";
 import { registerUser, signInUser } from "../../Firebase/EmailPassword";
-import { signInUserPopup } from "../../Firebase/GoogleAuth";
+// import { signInUserPopup } from "../../Firebase/GoogleAuth";
 
 
 function RegisterLogin({ login }) {

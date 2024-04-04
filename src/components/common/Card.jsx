@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../Button";
+import { Button } from "./Button";
 
 function Card() {
   let themeArray = ["blockchain", "iot/hardware", "healthcare", "government"];
@@ -27,7 +27,9 @@ function Card() {
             </h3>
           </div>
 
-          <div className="font-semibold  my-3 text-lg ">tag line Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+          <div className="font-semibold  my-3 text-lg ">
+            tag line Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Labore
           </div>
           <div className="my-2 text-gray-600 flex flex-col">
             <div className="flex ">
@@ -37,7 +39,7 @@ function Card() {
                   {themeArray && themeArray.length > 0 ? (
                     <>
                       {themeArray.slice(0, 3).map((theme) => (
-                        <div className="font-bold text-gray-400 py-[0.10rem] px-3 w-fit border-2 border-gray-300 rounded-3xl">
+                        <div className="font-bold text-gray-400 mt-[0.1rem] py-[0.10rem] px-3 w-fit border-2 border-gray-300 rounded-3xl">
                           {theme}
                         </div>
                       ))}
@@ -53,43 +55,42 @@ function Card() {
               </div>
 
               <div className="w-fit  flex flex-col items-center font-bold justify-center ml-auto text-base text-green-600  ">
-               
-                 100+ 
-                 <div>participaters</div>
+                100+
+                <div>participaters</div>
               </div>
             </div>
           </div>
 
-          
-            <div className="w-full flex flex-wrap md:flex-row my-6 items-center justify-center gap-3 md:gap-7 ">
-             
+          <div className="w-full flex flex-wrap md:flex-row my-6 items-center justify-center gap-3 md:gap-7 ">
             <div className="font-semibold  text-gray-800  py-3  px-6 w-fit bg-gray-100 border-0 border-gray-100 rounded-2xl  text-sm md:text-base">
-                OPEN
-              </div>
-              <div className="font-semibold  text-gray-800  py-3  px-3 w-fit bg-gray-100 border-0 border-gray-100 rounded-2xl text-sm md:text-base ">
-                STARTS DD/MM//YYYY
-              </div>
-              <div className="font-semibold  text-gray-800  py-3  px-6 w-fit bg-gray-100 border-0 border-gray-100 rounded-2xl text-sm md:text-base ">
-                ONLINE
-              </div>
-             
-             
-              <div className="  font-semibold  text-gray-800  py-3  px-6 w-fit bg-gray-100 border-0 border-gray-100 rounded-2xl text-sm md:text-base ">
-                LOCATION
-              </div>
-              
+              OPEN
             </div>
-            <div className="w-full flex items-center justify-center gap-x-7 ">
-            <Button variant="green" buttonStyle="m-0 bg-green-500 font-bold py-4  px-6">
-          View Details
-          </Button>
-          <Button variant="primary" buttonStyle="m-0 bg-blue-500 font-bold py-4  px-6">
-            Apply Now
-          </Button>
-          
+            <div className="font-semibold  text-gray-800  py-3  px-3 w-fit bg-gray-100 border-0 border-gray-100 rounded-2xl text-sm md:text-base ">
+              STARTS DD/MM//YYYY
+            </div>
+            <div className="font-semibold  text-gray-800  py-3  px-6 w-fit bg-gray-100 border-0 border-gray-100 rounded-2xl text-sm md:text-base ">
+              ONLINE
+            </div>
+
+            <div className="  font-semibold  text-gray-800  py-3  px-6 w-fit bg-gray-100 border-0 border-gray-100 rounded-2xl text-sm md:text-base ">
+              LOCATION
+            </div>
+          </div>
+          <div className="w-full flex items-center justify-center gap-x-7 ">
+            <Button
+              variant="green"
+              buttonStyle="m-0 bg-green-500 font-bold py-4  px-6"
+            >
+              View Details
+            </Button>
+            <Button
+              variant="primary"
+              buttonStyle="m-0 bg-blue-500 font-bold py-4  px-6"
+            >
+              Apply Now
+            </Button>
+          </div>
         </div>
-        </div>
-       
       </div>
     </>
   );
