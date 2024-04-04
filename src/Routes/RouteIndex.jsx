@@ -9,7 +9,7 @@ const Error404 = React.lazy(() => import("../components/Error404"));
 const Layout = React.lazy(() => import("../components/layout/Layout"));
 const Login = React.lazy(() => import("../components/Login-Register/Login"));
 const Cart = React.lazy(() => import("../components/Cart"));
-const Home = React.lazy(() => import("../components/Home"));
+const Home = React.lazy(() => import("../components/layout/Home/Home"));
 const Register = React.lazy(() =>
   import("../components/Login-Register/Register")
 );

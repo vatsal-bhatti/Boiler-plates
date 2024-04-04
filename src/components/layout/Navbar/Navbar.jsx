@@ -22,8 +22,8 @@ function NavItem({ item, itemBlue, setItemBlue }) {
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const [itemBlue, setItemBlue] = useState("Product");
-  const navigation = ["Product", "Features", "Pricing", "Company", "Blog"];
+  const [itemBlue, setItemBlue] = useState("Home");
+  const navigation = ["Home", "About","Hackathons","ContactUs" ];
 
   return (
     <>
@@ -80,7 +80,7 @@ function Navbar() {
               <Link to="#">
                 <Button
                   variant="primary"
-                  buttonStyle="w-full px-6 py-2 my-0 me-0 bg-blue-500 text-center text-base font-bold text-base border-2 transition-colors duration-100 hover:bg-white hover:text-gray-700 hover:border-gray-300 hover:shadow-xl"
+                  buttonStyle="w-full px-6 py-2 my-0 me-0 bg-green-500 text-center text-base font-bold text-base border-2 transition-colors duration-100 hover:bg-white hover:text-gray-700 hover:border-gray-300 hover:shadow-xl"
                 >
                   Sign In
                 </Button>
@@ -107,7 +107,7 @@ function Navbar() {
             <Link to="#">
               <Button
                 variant="primary"
-                buttonStyle="px-6 py-2 mb-0 bg-blue-500 font-bold text-base border-2 transition-colors duration-100 hover:bg-white hover:text-gray-700 hover:border-blue-500 hover:shadow-xl"
+                buttonStyle="px-6 py-2 mb-0 bg-green-500 font-bold text-base border-2 transition-colors duration-100 hover:bg-white hover:text-gray-700 hover:border-blue-500 hover:shadow-xl"
               >
                 Sign In
               </Button>

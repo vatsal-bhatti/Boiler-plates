@@ -1,5 +1,5 @@
 import { Routes, Route, RouterProvider } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./components/layout/Home/Home";
 import Cart from "./components/Cart";
 import Error404 from "./components/Error404";
 import Login from "./components/Login-Register/Login";
@@ -10,13 +10,9 @@ function App() {
   const router = Router();
   return (
     <>
-
-    <Suspense fallback={<Loader/>}>
-    <RouterProvider router={router} />
-
-    </Suspense>
-      
-    
+      <Suspense fallback={<Loader />}>
+        <RouterProvider router={router} />
+      </Suspense>
     </>
   );
 }
