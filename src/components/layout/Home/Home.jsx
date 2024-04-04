@@ -5,7 +5,7 @@ import Herosection from "./Herosection";
 import NavbarHoc from "../../../Hoc/NavbarHoc.";
 import { action1 } from "../../../redux/actions/actions";
 import Loader from "../../common/Loader";
-import Card from "../../common/Pagination/Card";
+import Card from "../../common/Card";
 import Pagination from "../../common/Pagination/Pagination";
 import RegisterLogin from "../../Login-Register/Register";
 import { authState } from "../../../Firebase/EmailPassword";
@@ -15,6 +15,7 @@ import { auth } from "../../../Firebase/Firebase";
 import RobotAnim from "../../../utils/herosection/robotjson.json";
 import Animation from "../../common/Animation/Animation";
 import Text from "../../../utils/herosection/newtext.json";
+import HappeningNow from "./HappeningNow";
 
 function Home() {
   const dispatch = useDispatch();
@@ -33,11 +34,8 @@ function Home() {
 
   return (
     <div>
-     
-
-<Herosection/>
-
-
+      <Herosection />
+      <HappeningNow />
 
       {/* <img src={GIF} /> */}
       {/* <Animation path={Text} height="10%" width="10%" /> */}

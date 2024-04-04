@@ -17,18 +17,18 @@ function Herosection() {
               </div>
               {/* <div className=" w-96"></div> */}
             </div>
-            <div className="container px-4 lg:flex mt-4  h-full md:w-full ">
+            <div className="container px-4  mt-8  h-full md:w-full ">
               <div className="w-full ">
                 <div className="text-3xl lg:text-5xl font-bold  ">
-                  Redefining economic opportunites for builders with{" "}
-                  <span className="text-blue-500">Hackathons</span>
+                  Redefining economic opportunites <span><br />with  <span className="text-blue-500">Hackathons</span></span> {" "}
+                 
                 </div>
                 <div className="w-20 h-2 bg-green-500 my-4 flex flex-col"></div>
-                <p className="text-base md:text-xl mb-5 ">
+                <p className="text-base md:text-xl mb-5 lg:mb-10">
                   You have the potential to build something that can change the
                   world. We make sure that you get at least one shot at doing
                   so. At our core, we want to create opportunities for builders
-                  through initiatives like{" "}
+                  through initiatives like
                   <span className="text-blue-500">ETHIndia:</span> the world's
                   largest Ethereum hackathon
                 </p>
@@ -40,7 +40,7 @@ function Herosection() {
             </div>
           </div>
         </div>
-        <div className="     md:visible  h-auto w-fit py-8">
+        <div className="       h-auto w-fit py-8">
           <Animation path={HeroAnime} width="50%" height="70%" />
         </div>
       </div>
