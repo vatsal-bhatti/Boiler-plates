@@ -9,6 +9,7 @@ import { composeWithDevTools } from "@redux-devtools/extension";
 import { BrowserRouter } from "react-router-dom";
 import { Button } from "./components/common/Button.jsx";
 import "./fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf";
+import HackathonsPage from "./components/layout/HackathonsPage/HackathonsPage.jsx";
 
 
 
@@ -17,10 +18,10 @@ const store = createStore(rootReducer, composeWithDevTools());
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <BrowserRouter> */}
-        <App />
-{/* <Button/> */}
-      {/* </BrowserRouter> */}
+      
+        {/* <App /> */}
+
+      <HackathonsPage/>
     </Provider>
   </React.StrictMode>
 );
