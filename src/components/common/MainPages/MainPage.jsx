@@ -53,14 +53,14 @@ function MainPage({ buttonMembers, currentMember, role }) {
         case "HostProfile"://this is host profile page at host side
             return (
               <>
-                <MainProfilePage name="Host Name" designation="Tagline of host" about="about that host content content contentcontent content contentcontent content contentcontent content contentcontent content contentcontent content content"/>
+                <MainProfilePage name="Host Name" role="host" tagline="Tagline of host" about="about that host content content contentcontent content contentcontent content contentcontent content contentcontent content contentcontent content content"/>
               </>
             );
         case "ParticipantProfile"://this is participant profile page at participant side
             return (
               <>
-                <MainProfilePage name="Participant Name" designation="designation (student or developer )" about="about that peroson content content content"/>
-              </>
+                <MainProfilePage name="Participant Name" role="participant" gender="female" designation="designation (student or developer)" about="about that person content content content" />
+ </>
             );
 
         

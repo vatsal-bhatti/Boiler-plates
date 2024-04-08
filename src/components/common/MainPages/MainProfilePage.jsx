@@ -1,24 +1,28 @@
 import React from "react";
-
-function MainProfilePage({name,tagline,designation,about,role}) {
+import Animation from "../Animation/Animation";
+import MaleAnimation from "../../../utils/Profile Page/Male Avatar.json"
+import FemaleAnimation from "../../../utils/Profile Page/Female Avatar.json"
+import HostAnimation from "../../../utils/Profile Page/HostAnimation.json"
+function MainProfilePage({name,tagline,designation,about,role,gender}) {
   return (
     <>
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 pt-10 pb-20  mx-auto ">
           <div className="lg:w-4/5 mx-auto flex flex-col  shadow-lg shadow-blue-500 rounded-md p-10">
-            <img
-              alt="ecommerce"
-              className="lg:w-1/2 md:w-3/4 w-full  lg:h-auto h-64 object-cover object-center rounded flex  self-center "
-              src="https://picsum.photos/id/30/200/150"
-            />
+          <Animation path={gender==="male"?MaleAnimation:gender ==="female"?FemaleAnimation:HostAnimation} width="50%" height="100%"  />
             <div className="lg:w-auto w-full lg:px-10 lg:py-6 mt-6 lg:mt-1 lg:mx-auto text-center    ">
             
-              <div className="text-gray-900 text-3xl title-font font-medium mb-2 border-b-2 border-green-500 w-fit mx-auto ">
-              {name}
+              <div className="text-gray-900 text-2xl md:text-3xl title-font font-medium mb-2 border-b-2 border-green-500 w-fit mx-auto ">
+            {name}
+
               </div>
               <h2 className="text-sm title-font text-gray-500 tracking-widest my-2">
                {role==="host"?tagline:designation}
               </h2>
+{role==="participant"?(<><h2 className="text-sm title-font text-gray-500 tracking-widest my-2">
+             gender({gender}) 
+              </h2></>):null}
+              
 
               <p className="leading-relaxed  ">
                {about}
