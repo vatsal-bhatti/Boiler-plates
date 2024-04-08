@@ -1,17 +1,14 @@
-import React, { useState } from 'react'
-import GroupButtons from '../../common/GroupButtons'
+import React from 'react'
+import MainPage from '../../common/MainPage/MainPage'
 
 function HackathonsPage() {
-    const buttonMembers=["Upcoming","Open","Past"] ;
-    const [activeButton,setActiveButton]  = useState("Open")
+const groupButtonMembers = ["open","past","upComing"];
+
+
+
   return (
     <>
-
-    <div className=" flex justify-center items-center mt-28   ">
-       
-    <GroupButtons buttonMembers={buttonMembers} activeButton = {activeButton} setActiveButton={setActiveButton} />
-    </div>
-      
+     <MainPage buttonMembers={groupButtonMembers} currentMember={groupButtonMembers[0]} /> 
     </>
   )
 }

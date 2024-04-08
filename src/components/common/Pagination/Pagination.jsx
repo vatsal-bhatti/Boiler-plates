@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Button } from "../Button";
+// import { twMerge } from "tailwind-merge";
 
-function Pagination({ recordsPerPage, data }) {
+function Pagination({ recordsPerPage, data, className }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const lastPage = Math.ceil(data.length / recordsPerPage);
+const elementsStyle = className;
+
 
   function prevPage() {
     setCurrentPage((currentPage) =>
@@ -26,7 +29,7 @@ function Pagination({ recordsPerPage, data }) {
       <div
         onClick={() => setCurrentPage(pageNumber)}
         className={twMerge(
-          "h-10 px-5 flex justify-center items-center text-green-600 transition-colors duration-150 focus:shadow-outline  cursor-pointer",
+          "h-10 px-5 flex justify-center items-center text-blue-500 transition-colors duration-150 focus:shadow-outline  cursor-pointer",
           style
         )}
       >
@@ -38,29 +41,35 @@ function Pagination({ recordsPerPage, data }) {
   return (
     <>
       <div className="flex flex-col justify-center items-center ">
-        <div className="h-[100vh] flex flex-col justify-center items-center ">
-        {data && data.length ? (
-          data
-            .slice(firstIndex, lastIndex)
-            .map((number, index) => <div key={index + 1}>number {number}</div>)
-        ) : (
-          <div>no data in children</div>
-        )}
+        <div
+          className={twMerge(
+            " flex flex-col justify-center items-center ",
+            elementsStyle
+          )}
+        >
+          {data && data.length ? (
+            data
+              .slice(firstIndex, lastIndex)
+              .map((number, index) => (
+                <div key={index + 1}>{number}</div>
+              ))
+          ) : (
+            <div>no data in children</div>
+          )}
         </div>
-        
 
-        <div className="bg-white p-4  flex  flex-wrap items-center justify-center">
+        <div className="bg-white p-4  flex  flex-wrap items-center justify-center mt-10 shadow-md shadow-blue-500 rounded-md">
           <nav aria-label="Page navigation">
             <ul className="inline-flex">
               <li>
                 <Button
                   onClick={() => setCurrentPage(1)}
                   buttonStyle={`h-10 px-5 text-${
-                    currentPage === 1 ? "white" : "green-600"
+                    currentPage === 1 ? "white" : "blue-500"
                   } font-bold transition-colors duration-150 rounded-l-lg focus:shadow-outline ${
                     currentPage === 1
                       ? "bg-gray-300 cursor-not-allowed"
-                      : "bg-green-200 hover:bg-green-600 hover:text-white"
+                      : "bg-blue-200 hover:bg-green-100 hover:text-blue-500"
                   }`}
                 >
                   &lt;&lt;
@@ -70,7 +79,7 @@ function Pagination({ recordsPerPage, data }) {
                 <Button
                   onClick={prevPage}
                   buttonStyle={`h-10 px-5 text-${
-                    currentPage === 1 ? "white" : "green-600"
+                    currentPage === 1 ? "white" : "blue-500"
                   } transition-colors duration-150 focus:shadow-outline ${
                     currentPage === 1
                       ? "bg-gray-300 cursor-not-allowed border-l-[0.1px] border-white"
@@ -88,7 +97,7 @@ function Pagination({ recordsPerPage, data }) {
                   <li>
                     <PageNumber
                       pageNumber={currentPage}
-                      style="text-white bg-green-600 cursor-default border border-r-0 border-green-600 "
+                      style="text-white bg-blue-500 cursor-default border border-r-0 border-green-600 "
                     />
                   </li>
                   <li>
@@ -115,13 +124,13 @@ function Pagination({ recordsPerPage, data }) {
                   <li>
                     <PageNumber
                       pageNumber={currentPage - 1}
-                      style="hover:bg-green-100"
+                      style="hover:bg-blue-100"
                     />
                   </li>
                   <li>
                     <PageNumber
                       pageNumber={currentPage}
-                      style="text-white bg-green-600 cursor-default border border-r-0 border-green-600 "
+                      style="text-white bg-blue-500 cursor-default border border-r-0 border-green-600 "
                     />
                   </li>
                 </>
@@ -136,7 +145,7 @@ function Pagination({ recordsPerPage, data }) {
                   <li>
                     <PageNumber
                       pageNumber={currentPage}
-                      style="text-white bg-green-600 cursor-default border border-r-0 border-green-600 "
+                      style="text-white bg-blue-500 cursor-default border border-r-0 border-green-600 "
                     />
                   </li>
                   <li>
@@ -152,7 +161,7 @@ function Pagination({ recordsPerPage, data }) {
                 <Button
                   onClick={nextPage}
                   buttonStyle={`h-10 px-5 text-${
-                    currentPage === lastPage ? "white" : "green-600"
+                    currentPage === lastPage ? "white" : "blue-500"
                   } transition-colors duration-150 ${
                     currentPage === lastPage
                       ? "bg-gray-300 cursor-not-allowed border-r-[0.1px] border-white"
@@ -168,11 +177,11 @@ function Pagination({ recordsPerPage, data }) {
                 <Button
                   onClick={() => setCurrentPage(lastPage)}
                   buttonStyle={`h-10 px-5 text-${
-                    currentPage === lastPage ? "white" : "green-600"
+                    currentPage === lastPage ? "white" : "blue-500"
                   } font-bold transition-colors duration-150 rounded-r-lg focus:shadow-outline ${
                     currentPage === lastPage
                       ? "bg-gray-300 cursor-not-allowed "
-                      : "bg-green-200 hover:bg-green-600 hover:text-white"
+                      : "bg-blue-200 hover:bg-green-100 hover:text-blue-500"
                   }`}
                 >
                   &gt;&gt;
