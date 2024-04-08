@@ -1,16 +1,17 @@
-import React from 'react'
-import MainPage from '../../common/MainPage/MainPage'
+import React from "react";
+import MainPage from "../../common/MainPages/MainPage";
 
 function HackathonsPage() {
-const groupButtonMembers = ["open","past","upComing"];
-
-
+  const groupButtonMembers = ["open", "past", "upComing"];
 
   return (
     <>
-     <MainPage buttonMembers={groupButtonMembers} currentMember={groupButtonMembers[0]} /> 
+      <MainPage
+        buttonMembers={groupButtonMembers}
+        currentMember={groupButtonMembers[0]}
+      />
     </>
-  )
+  );
 }
 
-export default HackathonsPage
+export default HackathonsPage;

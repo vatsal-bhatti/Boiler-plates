@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import GroupButtons from "../Search-Sort-Filter/GroupButtons";
 import SearchSort from "../Search-Sort-Filter/SearchSort";
 import Pagination from "../Pagination/Pagination";
+import MainProfilePage from "./MainProfilePage";
 import Card from "../Card";
 
 function MainPage({ buttonMembers, currentMember, role }) {
@@ -52,13 +53,13 @@ function MainPage({ buttonMembers, currentMember, role }) {
         case "HostProfile"://this is host profile page at host side
             return (
               <>
-                <div>hosts Profile Page</div>
+                <MainProfilePage name="Host Name" designation="Tagline of host" about="about that host content content contentcontent content contentcontent content contentcontent content contentcontent content contentcontent content content"/>
               </>
             );
         case "ParticipantProfile"://this is participant profile page at participant side
             return (
               <>
-                <div>Participants Profile Page</div>
+                <MainProfilePage name="Participant Name" designation="designation (student or developer )" about="about that peroson content content content"/>
               </>
             );
 
