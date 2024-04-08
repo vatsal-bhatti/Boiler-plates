@@ -8,6 +8,7 @@ import HostHackathonsPage from "./HostPages/HostHackathonsPage";
 import AdminMainPage from "./AdminPages/AdminMainPage";
 import ParticipantProfile from "./ParticipantPages/ParticipantProfile";
 import ViewDetailsPage from "./HackathonPages/ViewDetailsPage";
+import MainListPage from "../common/MainPages/MainListItem";
 function Layout() {
   return (
     <div>
@@ -15,10 +16,11 @@ function Layout() {
       {/* <Outlet /> */}
       {/* <MainPage /> */}
       {/* <HackathonsPage/> */}
-      <HostHackathonsPage/>
-      {/* <AdminMainPage/> */}
+      {/* <HostHackathonsPage/> */}
+      <AdminMainPage/>
       {/* <ParticipantProfile /> */}
       {/* <ViewDetailsPage/> */}
+      {/* <MainListPage/> */}
       <Footer />
     </div>
   );
