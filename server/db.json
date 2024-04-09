@@ -1,0 +1,731 @@
+{
+
+   "hosts":[
+    {
+      "id": 1,
+      "firstName": "Ravi",
+      "email": "ravi@example.com",
+      "password": "password123",
+      "phoneNumber": "123-456-7890",
+      "roles": ["host"],
+      "pastHackathons": [1, 2],
+      "description": "Passionate about fostering innovation and building communities. Experienced in organizing successful hackathons."
+    },
+    {
+      "id": 2,
+      "firstName": "Priya",
+      "email": "priya@example.com",
+      "password": "password456",
+      "phoneNumber": "987-654-3210",
+      "roles": ["host"],
+      "pastHackathons": [3],
+      "description": "Tech enthusiast with a vision to empower the next generation of innovators. Committed to creating impactful hackathon experiences."
+    },
+    {
+      "id": 3,
+      "firstName": "Amit",
+      "email": "amit@example.com",
+      "password": "password789",
+      "phoneNumber": "789-012-3456",
+      "roles": ["host"],
+      "pastHackathons": [4],
+      "description": "Innovative thinker and problem solver. Dedicated to driving positive change through technology and collaboration."
+    },
+    {
+      "id": 4,
+      "firstName": "Anjali",
+      "email": "anjali@example.com",
+      "password": "passwordabc",
+      "phoneNumber": "012-345-6789",
+      "roles": ["host"],
+      "pastHackathons": [5],
+      "description": "Experienced leader with a passion for empowering diverse teams. Committed to fostering an inclusive and supportive hackathon environment."
+    },
+    {
+      "id": 5,
+      "firstName": "Vijay",
+      "email": "vijay@example.com",
+      "password": "passworddef",
+      "phoneNumber": "345-678-9012",
+      "roles": ["host"],
+      "pastHackathons": [6],
+      "description": "Visionary entrepreneur with a track record of driving innovation. Dedicated to creating opportunities for collaboration and growth."
+    },
+    {
+      "id": 6,
+      "firstName": "Sunita",
+      "email": "sunita@example.com",
+      "password": "passwordghi",
+      "phoneNumber": "456-789-0123",
+      "roles": ["host"],
+      "pastHackathons": [7],
+      "description": "Passionate about technology and innovation. Experienced in hosting hackathons that inspire creativity and problem-solving."
+    },
+    {
+      "id": 7,
+      "firstName": "Rajesh",
+      "email": "rajesh@example.com",
+      "password": "passwordjkl",
+      "phoneNumber": "567-890-1234",
+      "roles": ["host"],
+      "pastHackathons": [8],
+      "description": "Committed to fostering a collaborative environment for innovation. Experienced in organizing hackathons that drive technological advancement."
+    },
+    {
+      "id": 8,
+      "firstName": "Meena",
+      "email": "meena@example.com",
+      "password": "passwordmno",
+      "phoneNumber": "678-901-2345",
+      "roles": ["host"],
+      "pastHackathons": [9],
+      "description": "Dedicated to empowering young innovators through hackathons. Experienced in creating engaging and impactful hackathon experiences."
+    },
+    {
+      "id": 9,
+      "firstName": "Sanjay",
+      "email": "sanjay@example.com",
+      "password": "passwordpqr",
+      "phoneNumber": "789-012-3456",
+      "roles": ["host"],
+      "pastHackathons": [10],
+      "description": "Passionate about driving innovation through collaboration. Experienced in hosting hackathons that inspire creative problem-solving."
+    },
+    {
+      "id": 10,
+      "firstName": "Pooja",
+      "email": "pooja@example.com",
+      "password": "passwordstu",
+      "phoneNumber": "890-123-4567",
+      "roles": ["host"],
+      "pastHackathons": [11],
+      "description": "Committed to fostering an inclusive environment for innovation. Experienced in organizing hackathons that drive positive change."
+    }
+  ],
+
+  "participants":[
+    {
+      "id": 1,
+      "firstName": "Rahul",
+      "lastName": "Sharma",
+      "email": "rahul@example.com",
+      "password": "password123",
+      "phoneNumber": "123-456-7890",
+      "roles": ["participant"],
+      "pastHackathons": [1],
+      "wonHackathons": [
+        {
+          "hackathonId": 1,
+          "hackathonName": "Innovate India",
+          "winner": {
+            "teamName": "Innovators",
+            "teamMembers": [
+              {
+                "participantId": 1,
+                "name": "Rahul Sharma",
+                "leader": true
+              },
+              {
+                "participantId": 2,
+                "name": "Priya Singh"
+              },
+              {
+                "participantId": 3,
+                "name": "Aman Gupta"
+              }
+            ]
+          },
+          "rank": 1
+        }
+      ],
+      "gender": "male"
+    },
+    {
+      "id": 2,
+      "firstName": "Priya",
+      "lastName": "Singh",
+      "email": "priya@example.com",
+      "password": "password456",
+      "phoneNumber": "987-654-3210",
+      "roles": ["participant"],
+      "pastHackathons": [2, 3],
+      "wonHackathons": [
+        {
+          "hackathonId": 1,
+          "hackathonName": "Innovate India",
+          "winner": {
+            "teamName": "Innovators",
+            "teamMembers": [
+              {
+                "participantId": 1,
+                "name": "Rahul Sharma",
+                "leader": true
+              },
+              {
+                "participantId": 2,
+                "name": "Priya Singh"
+              },
+              {
+                "participantId": 3,
+                "name": "Aman Gupta"
+              }
+            ]
+          },
+          "rank": 1
+        }
+      ],
+      "gender": "female"
+    },
+    {
+      "id": 3,
+      "firstName": "Aman",
+      "lastName": "Gupta",
+      "email": "aman@example.com",
+      "password": "password789",
+      "phoneNumber": "789-012-3456",
+      "roles": ["participant"],
+      "pastHackathons": [4],
+      "wonHackathons": [
+        {
+          "hackathonId": 1,
+          "hackathonName": "Innovate India",
+          "winner": {
+            "teamName": "Innovators",
+            "teamMembers": [
+              {
+                "participantId": 1,
+                "name": "Rahul Sharma",
+                "leader": true
+              },
+              {
+                "participantId": 2,
+                "name": "Priya Singh"
+              },
+              {
+                "participantId": 3,
+                "name": "Aman Gupta"
+              }
+            ]
+          },
+          "rank": 1
+        }
+      ],
+      "gender": "male"
+    },
+    {
+      "id": 4,
+      "firstName": "Anjali",
+      "lastName": "Kumar",
+      "email": "anjali@example.com",
+      "password": "passwordabc",
+      "phoneNumber": "012-345-6789",
+      "roles": ["participant"],
+      "pastHackathons": [5],
+      "wonHackathons": [
+        {
+          "hackathonId": 2,
+          "hackathonName": "Tech Challenge",
+          "winner": {
+            "teamName": "Tech Gurus",
+            "teamMembers": [
+              {
+                "participantId": 4,
+                "name": "Anjali Kumar",
+                "leader": true
+              },
+              {
+                "participantId": 5,
+                "name": "Vikas Patel"
+              },
+              {
+                "participantId": 6,
+                "name": "Sneha Verma"
+              }
+            ]
+          },
+          "rank": 1
+        }
+      ],
+      "gender": "female"
+    },
+    {
+      "id": 5,
+      "firstName": "Vikas",
+      "lastName": "Patel",
+      "email": "vikas@example.com",
+      "password": "passworddef",
+      "phoneNumber": "345-678-9012",
+      "roles": ["participant"],
+      "pastHackathons": [6],
+      "wonHackathons": [
+        {
+          "hackathonId": 2,
+          "hackathonName": "Tech Challenge",
+          "winner": {
+            "teamName": "Tech Gurus",
+            "teamMembers": [
+              {
+                "participantId": 4,
+                "name": "Anjali Kumar",
+                "leader": true
+              },
+              {
+                "participantId": 5,
+                "name": "Vikas Patel"
+              },
+              {
+                "participantId": 6,
+                "name": "Sneha Verma"
+              }
+            ]
+          },
+          "rank": 1
+        }
+      ],
+      "gender": "male"
+    },
+    {
+      "id": 6,
+      "firstName": "Sneha",
+      "lastName": "Verma",
+      "email": "sneha@example.com",
+      "password": "passwordghi",
+      "phoneNumber": "678-901-2345",
+      "roles": ["participant"],
+      "pastHackathons": [7],
+      "wonHackathons": [
+        {
+          "hackathonId": 2,
+          "hackathonName": "Tech Challenge",
+          "winner": {
+            "teamName": "Tech Gurus",
+            "teamMembers": [
+              {
+                "participantId": 4,
+                "name": "Anjali Kumar",
+                "leader": true
+              },
+              {
+                "participantId": 5,
+                "name": "Vikas Patel"
+              },
+              {
+                "participantId": 6,
+                "name": "Sneha Verma"
+              }
+            ]
+          },
+          "rank": 1
+        }
+      ],
+      "gender": "female"
+    },
+    
+        {
+          "id": 7,
+          "firstName": "Ravi",
+          "lastName": "Kumar",
+          "email": "ravi@example.com",
+          "password": "password123",
+          "phoneNumber": "123-456-7890",
+          "roles": ["participant"],
+          "pastHackathons": [1],
+          "wonHackathons": [
+            {
+              "hackathonId": 3,
+              "hackathonName": "Code India",
+              "winner": {
+                "teamName": "Code Masters",
+                "teamMembers": [
+                  {
+                    "participantId": 7,
+                    "name": "Ravi Kumar",
+                    "leader": true
+                  },
+                  {
+                    "participantId": 8,
+                    "name": "Pooja Singh"
+                  },
+                  {
+                    "participantId": 9,
+                    "name": "Amit Gupta"
+                  }
+                ]
+              },
+              "rank": 1
+            }
+          ],
+          "gender": "male"
+        },
+        {
+          "id": 8,
+          "firstName": "Pooja",
+          "lastName": "Singh",
+          "email": "pooja@example.com",
+          "password": "password456",
+          "phoneNumber": "987-654-3210",
+          "roles": ["participant"],
+          "pastHackathons": [2, 3],
+          "wonHackathons": [
+            {
+              "hackathonId": 3,
+              "hackathonName": "Code India",
+              "winner": {
+                "teamName": "Code Masters",
+                "teamMembers": [
+                  {
+                    "participantId": 7,
+                    "name": "Ravi Kumar",
+                    "leader": true
+                  },
+                  {
+                    "participantId": 8,
+                    "name": "Pooja Singh"
+                  },
+                  {
+                    "participantId": 9,
+                    "name": "Amit Gupta"
+                  }
+                ]
+              },
+              "rank": 1
+            }
+          ],
+          "gender": "female"
+        },
+        {
+          "id": 9,
+          "firstName": "Amit",
+          "lastName": "Gupta",
+          "email": "amit@example.com",
+          "password": "password789",
+          "phoneNumber": "789-012-3456",
+          "roles": ["participant"],
+          "pastHackathons": [4],
+          "wonHackathons": [
+            {
+              "hackathonId": 3,
+              "hackathonName": "Code India",
+              "winner": {
+                "teamName": "Code Masters",
+                "teamMembers": [
+                  {
+                    "participantId": 7,
+                    "name": "Ravi Kumar",
+                    "leader": true
+                  },
+                  {
+                    "participantId": 8,
+                    "name": "Pooja Singh"
+                  },
+                  {
+                    "participantId": 9,
+                    "name": "Amit Gupta"
+                  }
+                ]
+              },
+              "rank": 1
+            }
+          ],
+          "gender": "male"
+        }
+       
+
+
+
+  ],
+
+
+  "hackathons":[
+    {
+      "id": 1,
+      "hackathonStatus": "upcoming",
+      "hostId": 1,
+      "name": "Innovate-a-thon",
+      "tagline": "Unleash Innovation, Create Change",
+      "description": "Join us for an exciting hackathon where ideas turn into reality. Get ready to innovate, collaborate, and make a difference.",
+      "prize": {
+        "1st": "Cash prize",
+        "2nd": "Gift vouchers"
+      },
+      "techstacks": ["Web development", "Machine learning"],
+      "dates": {
+        "registrationStart": "2024-05-01",
+        "registrationEnd": "2024-05-15",
+        "hackathonStart": "2024-06-01",
+        "hackathonEnd": "2024-06-03"
+      },
+      "teamSize": {"max": 4, "min": 1},
+      "mode": "online"
+    },
+    {
+      "id": 2,
+      "hackathonStatus": "past",
+      "hostId": 2,
+      "name": "Code for Impact",
+      "tagline": "Hack for Change, Impact the World",
+      "description": "Join us for a hackathon focused on social impact. Let's harness technology to address real-world challenges and create positive change.",
+      "prize": {
+        "1st": "Scholarship",
+        "2nd": "Internship opportunity"
+      },
+      "techstacks": ["Mobile app development", "Data analysis"],
+      "dates": {
+        "registrationStart": "2024-04-01",
+        "registrationEnd": "2024-04-15",
+        "hackathonStart": "2024-04-20",
+        "hackathonEnd": "2024-04-22"
+      },
+      "teamSize": {"max": 5, "min": 1},
+      "mode": "online"
+    },
+    {
+      "id": 3,
+      "hackathonStatus": "upcoming",
+      "hostId": 1,
+      "name": "TechXcelerate",
+      "tagline": "Accelerate Your Tech Journey",
+      "description": "Embark on a journey of innovation and technology. TechXcelerate is where aspiring tech enthusiasts come together to learn, create, and grow.",
+      "prize": {
+        "1st": "Tech gadgets",
+        "2nd": "Training programs"
+      },
+      "techstacks": ["AI", "Blockchain"],
+      "dates": {
+        "registrationStart": "2024-07-01",
+        "registrationEnd": "2024-07-15",
+        "hackathonStart": "2024-08-01",
+        "hackathonEnd": "2024-08-03"
+      },
+      "teamSize": {"max": 3, "min": 1},
+      "mode": "offline",
+      "location": "Bangalore, India"
+    },
+    {
+      "id": 4,
+      "hackathonStatus": "open",
+      "hostId": 3,
+      "name": "TechGuru",
+      "tagline": "Become the Guru of Technology",
+      "description": "TechGuru is your chance to showcase your skills and knowledge. Join us to compete, learn, and network with fellow tech enthusiasts.",
+      "prize": {
+        "1st": "Tech gadgets",
+        "2nd": "Certificate of Excellence"
+      },
+      "techstacks": ["Cybersecurity", "IoT"],
+      "dates": {
+        "registrationStart": "2024-06-01",
+        "registrationEnd": "2024-06-15",
+        "hackathonStart": "2024-07-01",
+        "hackathonEnd": "2024-07-03"
+      },
+      "teamSize": {"max": 4, "min": 1},
+      "mode": "online"
+    },
+    {
+      "id": 5,
+      "hackathonStatus": "past",
+      "hostId": 4,
+      "name": "DataDriven",
+      "tagline": "Harnessing the Power of Data",
+      "description": "DataDriven was aimed at exploring innovative ways to leverage data for solving complex problems. Participants got hands-on experience and valuable insights.",
+      "prize": {
+        "1st": "Data science toolkit",
+        "2nd": "Online courses"
+      },
+      "techstacks": ["Data science", "Data visualization"],
+      "dates": {
+        "registrationStart": "2024-03-01",
+        "registrationEnd": "2024-03-15",
+        "hackathonStart": "2024-03-20",
+        "hackathonEnd": "2024-03-22"
+      },
+      "teamSize": {"max": 3, "min": 1},
+      "mode": "online"
+    },
+    {
+      "id": 6,
+      "hackathonStatus": "upcoming",
+      "hostId": 2,
+      "name": "CodeCrafters",
+      "tagline": "Crafting the Future with Code",
+      "description": "Join us in a coding extravaganza where creativity meets technology. CodeCrafters is your platform to code, collaborate, and innovate.",
+      "prize": {
+        "1st": "Coding gadgets",
+        "2nd": "Coding books"
+      },
+      "techstacks": ["Web development", "Mobile app development"],
+      "dates": {
+        "registrationStart": "2024-08-01",
+        "registrationEnd": "2024-08-15",
+        "hackathonStart": "2024-09-01",
+        "hackathonEnd": "2024-09-03"
+      },
+      "teamSize": {"max": 5, "min": 1},
+      "mode": "online"
+    },
+    {
+      "id": 7,
+      "hackathonStatus": "open",
+      "hostId": 3,
+      "name": "AI Innovators",
+      "tagline": "Unleash the Power of AI",
+      "description": "AI Innovators is your chance to explore the realm of artificial intelligence. Join us to build AI solutions and compete for exciting prizes.",
+      "prize": {
+        "1st": "AI gadgets",
+        "2nd": "AI courses"
+      },
+      "techstacks": ["Artificial intelligence", "Deep learning"],
+      "dates": {
+        "registrationStart": "2024-07-01",
+        "registrationEnd": "2024-07-15",
+        "hackathonStart": "2024-08-01",
+        "hackathonEnd": "2024-08-03"
+      },
+      "teamSize": {"max": 4, "min": 1},
+      "mode": "online"
+    },
+    {
+      "id": 8,
+      "hackathonStatus": "upcoming",
+      "hostId": 4,
+      "name": "Hack4Health",
+      "tagline": "Hacking for a Healthy Future",
+      "description": "Join us for Hack4Health and contribute your skills to solving healthcare challenges. Let's innovate together for a healthier tomorrow.",
+      "prize": {
+        "1st": "Health gadgets",
+        "2nd": "Fitness subscriptions"
+      },
+      "techstacks": ["Healthcare technology", "Telemedicine"],
+      "dates": {
+        "registrationStart": "2024-09-01",
+        "registrationEnd": "2024-09-15",
+        "hackathonStart": "2024-10-01",
+        "hackathonEnd": "2024-10-03"
+      },
+      "teamSize": {"max": 3, "min": 1},
+      "mode": "offline",
+      "location": "Mumbai, India"
+    },
+    {
+      "id": 9,
+      "hackathonStatus": "open",
+      "hostId": 1,
+      "name": "EcoTech Challenge",
+      "tagline": "Building a Sustainable Future",
+      "description": "EcoTech Challenge invites you to use technology to address environmental challenges. Join us to innovate for a greener planet.",
+      "prize": {
+        "1st": "Environment-friendly gadgets",
+        "2nd": "Green technology courses"
+      },
+      "techstacks": ["Environmental science", "Renewable energy"],
+      "dates": {
+        "registrationStart": "2024-08-01",
+        "registrationEnd": "2024-08-15",
+        "hackathonStart": "2024-09-01",
+        "hackathonEnd": "2024-09-03"
+      },
+      "teamSize": {"max": 4, "min": 1},
+      "mode": "online"
+    },
+    {
+      "id": 10,
+      "hackathonStatus": "past",
+      "hostId": 2,
+      "name": "TechConnect",
+      "tagline": "Connecting Tech Enthusiasts",
+      "description": "TechConnect provided a platform for tech enthusiasts to connect, learn, and showcase their skills. It was a hub of innovation and collaboration.",
+      "prize": {
+        "1st": "Networking gadgets",
+        "2nd": "Technology books"
+      },
+      "techstacks": ["Networking", "Cybersecurity"],
+      "dates": {
+        "registrationStart": "2024-02-01",
+        "registrationEnd": "2024-02-15",
+        "hackathonStart": "2024-03-01",
+        "hackathonEnd": "2024-03-03"
+      },
+      "teamSize": {"max": 5, "min": 1},
+      "mode": "online"
+    }
+  ],
+  
+"hackathonApplications":[
+    {
+      "hackathonId": 1,
+      "hackathonName": "Innovate-a-thon",
+      "totalApplications": [
+        {
+          "applicationId": 1,
+          "applicationStatus": "pending",
+          "leaderId": 1,
+          "teamDetails": [
+            {
+              "id": 1,
+              "firstName": "Amit",
+              "lastName": "Patel",
+              "email": "amit@example.com"
+            },
+            {
+              "id": 2,
+              "firstName": "Riya",
+              "lastName": "Shah",
+              "email": "riya@example.com"
+            }
+          ],
+          "problemStatementAbstract": "Tackling air pollution in urban areas.",
+          "solutionStatement": "Our solution monitors air quality and provides personalized recommendations to reduce pollution exposure.",
+          "technologyUsed": ["React Native", "Node.js", "Firebase"]
+        },
+        {
+          "applicationId": 2,
+          "applicationStatus": "rejected",
+          "leaderId": 2,
+          "teamDetails": [
+            {
+              "id": 3,
+              "firstName": "Akash",
+              "lastName": "Kumar",
+              "email": "akash@example.com"
+            }
+          ],
+          "problemStatementAbstract": "Improving road safety through technology.",
+          "solutionStatement": "Our solution utilizes AI-powered dashcams to detect and prevent accidents.",
+          "technologyUsed": ["Angular", "Python", "MongoDB"]
+        }
+      ],
+      "acceptedApplications": [
+        {
+          "applicationId": 3,
+          "applicationStatus": "accepted",
+          "leaderId": 3,
+          "teamDetails": [
+            {
+              "id": 4,
+              "firstName": "Priya",
+              "lastName": "Singh",
+              "email": "priya@example.com"
+            },
+            {
+              "id": 5,
+              "firstName": "Rahul",
+              "lastName": "Gupta",
+              "email": "rahul@example.com"
+            }
+          ],
+          "problemStatementAbstract": "Enhancing agricultural productivity through IoT.",
+          "solutionStatement": "Our platform integrates IoT sensors to optimize irrigation and crop management.",
+          "technologyUsed": ["Vue.js", "Firebase", "Express.js"]
+        }
+      ]
+    }
+  ]
+  
+  
+  
+}
+
+
+
+
