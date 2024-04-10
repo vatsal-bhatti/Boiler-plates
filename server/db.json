@@ -142,7 +142,7 @@
       "description": "Committed to fostering an inclusive environment for innovation. Experienced in organizing hackathons that drive positive change."
     },
     {
-      "id": 11,
+      "id": "11",
       "firstName": "vatsal",
       "email": "vatsalb5475@gmail.com",
       "password": "123456",
@@ -155,7 +155,7 @@
       "wonHackathons": []
     },
     {
-      "id": 11,
+      "id": "11",
       "firstName": "vatsal",
       "email": "vatsalb5475@gmail.com",
       "password": "123456",
@@ -168,7 +168,7 @@
       "wonHackathons": []
     },
     {
-      "id": 11,
+      "id": "11",
       "firstName": "vatsal",
       "email": "vatsalb5475@gmail.com",
       "password": "123456",
@@ -181,7 +181,7 @@
       "wonHackathons": []
     },
     {
-      "id": 12,
+      "id": "12",
       "firstName": "divyarajsinh",
       "email": "rushibhatti33@gmail.com",
       "password": "123456",
@@ -194,7 +194,7 @@
       "wonHackathons": []
     },
     {
-      "id": 13,
+      "id": "13",
       "firstName": "divyarajsinh",
       "email": "rushibhatti33@gmail.com",
       "password": "123456",
@@ -207,7 +207,7 @@
       "wonHackathons": []
     },
     {
-      "id": 14,
+      "id": "14",
       "firstName": "dipak",
       "email": "raahul@example.com",
       "password": "123456",
@@ -584,7 +584,7 @@
       "gender": "male"
     },
     {
-      "id": 10,
+      "id": "10",
       "firstName": "vatsal",
       "email": "vatsalb5475@gmail.com",
       "password": "123456",
@@ -871,7 +871,7 @@
       "mode": "online"
     },
     {
-      "id": 11,
+      "id": "11",
       "hackathonStatus": "Open",
       "hostId": "1",
       "name": "vatsal",
@@ -900,7 +900,7 @@
       "location": "ahmedabad"
     },
     {
-      "id": 12,
+      "id": "12",
       "hackathonStatus": "Open",
       "hostId": "1",
       "name": "vatsal",
@@ -929,7 +929,7 @@
       "location": "ahmedabad"
     },
     {
-      "id": 12,
+      "id": "12",
       "hackathonStatus": "Open",
       "hostId": "1",
       "name": "vatsal",
@@ -958,7 +958,7 @@
       "location": "ahmedabad"
     },
     {
-      "id": 13,
+      "id": "13",
       "hackathonStatus": "Open",
       "hostId": "1",
       "name": "vatsal",
@@ -987,7 +987,7 @@
       "location": "ahmedabad"
     },
     {
-      "id": 14,
+      "id": "14",
       "hackathonStatus": "Open",
       "hostId": "1",
       "name": "vatsal",
@@ -1016,7 +1016,7 @@
       "location": "ahmedabad"
     },
     {
-      "id": 15,
+      "id": "15",
       "hackathonStatus": "Open",
       "hostId": "1",
       "name": "vatsal",
@@ -1043,89 +1043,203 @@
       },
       "mode": "Online",
       "location": "ahmedabad"
+    },
+    {
+      "id": 16,
+      "hackathonStatus": "Upcoming",
+      "hostId": "1",
+      "name": "eth",
+      "tagline": "ncsalsmclacmlac",
+      "description": "SKLJLSDMC;LLDCZKKNCSNCSCLMSLCMSLMCLMSL;CMS;LLCM;SLMC;LSM",
+      "prizes": {
+        "prizePool": 100000,
+        "perks": [
+          "Accommodation",
+          "Meals",
+          "Swags",
+          "Goodies",
+          "Internship Opportunities"
+        ]
+      },
+      "techstacks": [
+        "BlockChain",
+        "AI/ML"
+      ],
+      "dates": {
+        "registrationStart": "2024-04-11",
+        "registrationEnd": "2024-04-12",
+        "hackathonStart": "2024-04-20",
+        "hackathonEnd": "2024-04-25"
+      },
+      "teamSize": {
+        "max": 10,
+        "min": 5
+      },
+      "mode": "Online",
+      "location": "remote"
+    },
+    {
+      "id": 17,
+      "hackathonStatus": "Upcoming",
+      "hostId": "1",
+      "name": "Md;l",
+      "tagline": "mmSDLKSMADLMSLDMLKSMDL;SMD",
+      "description": "NSALKMLMSD;LDMSDL;MSL;DMSLDM,SNDLSMMDLMSDLMSLDLM;LM",
+      "prizes": {
+        "prizePool": 100000,
+        "perks": [
+          "No OtherPerks"
+        ]
+      },
+      "techstacks": [
+        "No Restrictions"
+      ],
+      "dates": {
+        "registrationStart": "2024-04-11",
+        "registrationEnd": "2024-04-12",
+        "hackathonStart": "2024-04-13",
+        "hackathonEnd": "2024-04-14"
+      },
+      "teamSize": {
+        "max": 10,
+        "min": 5
+      },
+      "mode": "Online",
+      "location": "REMOTE"
     }
   ],
   "hackathonApplications": [
     {
+      "id": 1,
       "hackathonId": 1,
       "hackathonName": "Innovate-a-thon",
-      "totalApplications": [
+      "applicationStatus": "pending",
+      "leaderId": 1,
+      "teamDetails": [
         {
-          "applicationId": 1,
-          "applicationStatus": "pending",
-          "leaderId": 1,
-          "teamDetails": [
-            {
-              "id": 1,
-              "firstName": "Amit",
-              "lastName": "Patel",
-              "email": "amit@example.com"
-            },
-            {
-              "id": 2,
-              "firstName": "Riya",
-              "lastName": "Shah",
-              "email": "riya@example.com"
-            }
-          ],
-          "problemStatementAbstract": "Tackling air pollution in urban areas.",
-          "solutionStatement": "Our solution monitors air quality and provides personalized recommendations to reduce pollution exposure.",
-          "technologyUsed": [
-            "React Native",
-            "Node.js",
-            "Firebase"
-          ]
+          "id": 1,
+          "firstName": "Amit",
+          "lastName": "Patel",
+          "email": "amit@example.com"
         },
         {
-          "applicationId": 2,
-          "applicationStatus": "rejected",
-          "leaderId": 2,
-          "teamDetails": [
-            {
-              "id": 3,
-              "firstName": "Akash",
-              "lastName": "Kumar",
-              "email": "akash@example.com"
-            }
-          ],
-          "problemStatementAbstract": "Improving road safety through technology.",
-          "solutionStatement": "Our solution utilizes AI-powered dashcams to detect and prevent accidents.",
-          "technologyUsed": [
-            "Angular",
-            "Python",
-            "MongoDB"
-          ]
+          "id": 2,
+          "firstName": "Riya",
+          "lastName": "Shah",
+          "email": "riya@example.com"
         }
       ],
-      "acceptedApplications": [
+      "problemStatementAbstract": "Tackling air pollution in urban areas.",
+      "solutionStatement": "Our solution monitors air quality and provides personalized recommendations to reduce pollution exposure.",
+      "technologyUsed": [
+        "React Native",
+        "Node.js",
+        "Firebase"
+      ]
+    },
+    {
+      "id": 2,
+      "applicationStatus": "rejected",
+      "leaderId": 2,
+      "teamDetails": [
         {
-          "applicationId": 3,
-          "applicationStatus": "accepted",
-          "leaderId": 3,
-          "teamDetails": [
-            {
-              "id": 4,
-              "firstName": "Priya",
-              "lastName": "Singh",
-              "email": "priya@example.com"
-            },
-            {
-              "id": 5,
-              "firstName": "Rahul",
-              "lastName": "Gupta",
-              "email": "rahul@example.com"
-            }
-          ],
-          "problemStatementAbstract": "Enhancing agricultural productivity through IoT.",
-          "solutionStatement": "Our platform integrates IoT sensors to optimize irrigation and crop management.",
-          "technologyUsed": [
-            "Vue.js",
-            "Firebase",
-            "Express.js"
-          ]
+          "id": 3,
+          "firstName": "Akash",
+          "lastName": "Kumar",
+          "email": "akash@example.com"
         }
       ],
-      "id": "b3e3"
+      "problemStatementAbstract": "Improving road safety through technology.",
+      "solutionStatement": "Our solution utilizes AI-powered dashcams to detect and prevent accidents.",
+      "technologyUsed": [
+        "Angular",
+        "Python",
+        "MongoDB"
+      ]
+    },
+    {
+      "id": 3,
+      "applicationStatus": "accepted",
+      "leaderId": 3,
+      "teamDetails": [
+        {
+          "id": 4,
+          "firstName": "Priya",
+          "lastName": "Singh",
+          "email": "priya@example.com"
+        },
+        {
+          "id": 5,
+          "firstName": "Rahul",
+          "lastName": "Gupta",
+          "email": "rahul@example.com"
+        }
+      ],
+      "problemStatementAbstract": "Enhancing agricultural productivity through IoT.",
+      "solutionStatement": "Our platform integrates IoT sensors to optimize irrigation and crop management.",
+      "technologyUsed": [
+        "Vue.js",
+        "Firebase",
+        "Express.js"
+      ]
+    },
+    {
+      "id": 4,
+      "hackathonId": 1,
+      "hackathonName": 1,
+      "applicationStatus": "pending",
+      "leaderId": 1,
+      "teamDetails": [
+        {
+          "name": "abc",
+          "email": "abc@gmail.com",
+          "gender": "Female"
+        }
+      ],
+      "problemStatementAbstract": "",
+      "solutionStatement": "",
+      "technologyUsed": [
+        "BlockChain"
+      ]
+    },
+    {
+      "id": 4,
+      "hackathonId": 1,
+      "hackathonName": 1,
+      "applicationStatus": "pending",
+      "leaderId": 1,
+      "teamDetails": [
+        {
+          "name": "abc",
+          "email": "abc@gmail.com",
+          "gender": "Male"
+        }
+      ],
+      "problemStatementAbstract": "",
+      "solutionStatement": "",
+      "technologyUsed": [
+        "BlockChain"
+      ]
+    },
+    {
+      "id": 5,
+      "hackathonId": 1,
+      "hackathonName": 1,
+      "applicationStatus": "pending",
+      "leaderId": 1,
+      "teamDetails": [
+        {
+          "name": "abc",
+          "email": "abc@gmail.com",
+          "gender": "Male"
+        }
+      ],
+      "problemStatementAbstract": "d;llmd;llem;dlm;llmd;ld;llem;ldmmd;lme;lde;lmdme;lde;ldm",
+      "solutionStatement": "",
+      "technologyUsed": [
+        "BlockChain",
+        "No Restrictions"
+      ]
     }
   ]
 }
