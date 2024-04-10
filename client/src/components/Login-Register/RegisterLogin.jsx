@@ -206,7 +206,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { RegisterSchema, LoginSchema } from "./Schemas/Schemas";
+import { RegisterSchema, LoginSchema } from "../common/Schemas/Schemas";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkFunction } from "../../redux/actions/RegisterLoginActions";
 import { generalThunkFunction } from "../../redux/actions/Genralactions";
@@ -314,7 +314,7 @@ function RegisterLogin({ login }) {
                       navigate("/login")
                     }
                   }
-                  // action.resetForm();
+                  action.resetForm();
                 }}
               >
                 {(formik) => (
