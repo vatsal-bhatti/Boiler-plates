@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import { reducerfunction1 } from "./reducerfunctions/reducerfunction";
-
+import { RegisterLoginReducer } from "./reducerfunctions/RegisterLoginReducer";
+import { GeneralReducer } from "./reducerfunctions/GeneratlReducer";
 
 const rootReducer = combineReducers({
 
-reducer1: reducerfunction1,
+    registerLoginReducer: RegisterLoginReducer,
+    generalReducer:GeneralReducer,
 
 
 });

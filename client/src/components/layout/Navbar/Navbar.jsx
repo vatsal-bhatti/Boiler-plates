@@ -2,29 +2,35 @@ import React, { useState } from "react";
 import LogoImg from "../../../utils/images/Hackfolic.png";
 import { Link } from "react-router-dom";
 import { Button } from "../../common/Button";
+import { useSelector } from "react-redux";
 
 function NavItem({ item, itemBlue, setItemBlue }) {
   return (
-    <Link to="#">
+    <Link to={item.path}>
       <div
-        onClick={() => setItemBlue(item)}
+        onClick={() => setItemBlue(item.name)}
         className={`w-full px-4 py-2 font-bold rounded-md transition-colors duration-100  border-2  hover:border-blue-500 hover:shadow-xl ${
-          itemBlue === item
+          itemBlue === item.name
             ? "text-blue-500    focus:text-gray-700  border-blue-500  hover:border-gray-300"
             : "text-gray-700 border-white hover:text-blue-500 focus:text-blue-500 "
         }  focus:bg-blue-100 focus:outline-none`}
       >
-        {item}
+        {item.name}
       </div>
     </Link>
   );
 }
 
 function Navbar() {
+  const loginState = useSelector(state=>state.registerLoginReducer)
   const [open, setOpen] = useState(false);
   const [itemBlue, setItemBlue] = useState("Home");
-  const navigation = ["Home", "About","Hackathons","ContactUs" ];
-
+  const navigation = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "#heroSection" },
+    { name: "Hackathons", path: "/hackathons" },
+    { name: "ContactUs", path: "#footer" },
+  ];
   return (
     <>
       <div className="w-full border-2 shadow-md ">
@@ -106,7 +112,7 @@ function Navbar() {
           <div className="hidden mr-3 space-x-3 lg:flex nav__item">
             <Link to="#">
               <Button
-                variant="primary"
+                variant={loginState.isAuth?"danger":"green"}
                 buttonStyle="px-6 py-2 mb-0 bg-green-500 font-bold text-base border-2 transition-colors duration-100 hover:bg-white hover:text-gray-700 hover:border-blue-500 hover:shadow-xl"
               >
                 Sign In

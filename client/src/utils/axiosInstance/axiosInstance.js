@@ -7,19 +7,60 @@ export const API = axios.create({
 
 // example to write the axios functions
 
-// export const getProducts = async () => {
-//     try {
-//       const res = await API.get("products");
-//       return {
-//         success: true,
-//         data: res.data,
-//         error: null,
-//       };
-//     } catch (error) {
-//       return {
-//         success: false,
-//         data: [],
-//         error: error.message,
-//       };
-//     }
-//   };
+export const getMethod = async (endpoint) => {
+  try {
+    const res = await API.get(endpoint);
+    console.log(res)
+if(res.data.length>0) {return {
+  success: true,
+  data: res.data,
+  error: null,
+}} else { throw error}
+   
+  } catch (error) {
+    return {
+      success: false,
+      data: null, // Set data to null in case of error
+      error: "data not found",
+    };
+  }
+};
+
+export const postMethod = async (endpoint,data) => {
+  try {
+    const res = await API.post(endpoint,data);
+    console.log(res)
+ return {
+  success: true,
+  data: res.data,
+  error: null,
+}
+   
+  } catch (error) {
+    return {
+      success: false,
+      data: null, // Set data to null in case of error
+      error: "data not found",
+    };
+  }
+};
+
+export const getUsers = async (userType,endpoint) => {
+  try {
+    const res = await API.get(endpoint);
+    console.log(res)
+    console.log(res.data)
+ return {
+  success: true,
+  data: res.data,
+  error: null,
+}
+   
+  } catch (error) {
+    return {
+      success: false,
+      data: null, // Set data to null in case of error
+      error: `${userType} not found`,
+    };
+  }
+};

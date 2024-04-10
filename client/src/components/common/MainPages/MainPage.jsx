@@ -5,7 +5,7 @@ import Pagination from "../Pagination/Pagination";
 import MainProfilePage from "./MainProfilePage";
 import MainListItem from "./MainListItem";
 import Card from "../Card";
-import RegisterLogin from "../../Login-Register/Register";
+import RegisterLogin from "../../Login-Register/RegisterLogin";
 
 function MainPage({ buttonMembers, currentMember, role }) {
   const [userRole, setUserRole] = useState(null);
@@ -21,7 +21,6 @@ function MainPage({ buttonMembers, currentMember, role }) {
   const [paginationData, setPaginationData] = useState(number);
   const [searchSortFlag, setSearchSortFlag] = useState(true);
   const [paginationFlag, setPaginationFlag] = useState(true);
-  
 
   useEffect(() => {
     setUserRole(role);
@@ -33,7 +32,7 @@ function MainPage({ buttonMembers, currentMember, role }) {
       activeButton === "addNewHackathon" ||
       activeButton === "addNewUser" ||
       activeButton === "ParticipantProfile" ||
-      activeButton === "HostProfile" 
+      activeButton === "HostProfile"
     ) {
       setSearchSortFlag(false);
       setPaginationFlag(false);
@@ -42,8 +41,6 @@ function MainPage({ buttonMembers, currentMember, role }) {
       setPaginationFlag(true);
     }
   }, [activeButton]);
-
-  
 
   console.log(activeButton);
   function pageToLoad(buttonName) {
@@ -62,20 +59,25 @@ function MainPage({ buttonMembers, currentMember, role }) {
           { title: "Mechanical Engineering", subtitle: 48, mcqs: 18222 },
           // Add other items here...
         ];
-      
-       return(<>
-       <div className="grid  grid-cols-1 lg:grid-cols-2 w-full gap-6 p-5" >
-       {listdata.map((data)=>(<><MainListItem title={data.title} subtitle={data.subtitle} /></>))}
-       </div>
-       
-       </>) 
+
+        return (
+          <>
+            <div className="grid  grid-cols-1 lg:grid-cols-2 w-full gap-6 p-5">
+              {listdata.map((data) => (
+                <>
+                  <MainListItem title={data.title} subtitle={data.subtitle} />
+                </>
+              ))}
+            </div>
+          </>
+        );
         // setPaginationData(newListData);
         break;
-        // return (
-        //   <>
-        //     <MainListItem />
-        //   </>
-        // );
+      // return (
+      //   <>
+      //     <MainListItem />
+      //   </>
+      // );
       case "Participant": //this participant means participants list at admin side
         return (
           <>
@@ -127,7 +129,7 @@ function MainPage({ buttonMembers, currentMember, role }) {
       case "addNewUser":
         return (
           <>
-           <RegisterLogin login={false}/>
+            <RegisterLogin login={false} />
           </>
         );
 

@@ -1,7 +1,9 @@
 import React from "react";
 import { Button } from "./Button";
+import { useNavigate } from "react-router-dom";
 
 function Card({tag}) {
+  const navigate = useNavigate();
   let themeArray = ["blockchain", "iot/hardware", "healthcare", "government"];
   themeArray = themeArray.map((theme) => {
     return theme.toUpperCase();
@@ -80,10 +82,12 @@ function Card({tag}) {
             <Button
               variant="green"
               buttonStyle="m-0 bg-green-500 font-bold py-4  px-6"
+              onClick={()=>navigate("/viewDetailPage")}
             >
               View Details
             </Button>
             <Button
+           onClick={()=>navigate("/applyNowPage")}
               variant="primary"
               buttonStyle="m-0 bg-blue-500 font-bold py-4  px-6"
             >
