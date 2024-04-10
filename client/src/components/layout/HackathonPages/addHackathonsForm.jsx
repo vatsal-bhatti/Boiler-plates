@@ -9,7 +9,7 @@ import {
   generalThunkFunction,
   workSuccess,
 } from "../../../redux/actions/Genralactions";
-function AddHackathonForm() {
+function AddHackathonForm({ ApplyNow }) {
   const generalState = useSelector((state) => state.generalReducer);
 
   const dispatch = useDispatch();
@@ -116,16 +116,12 @@ function AddHackathonForm() {
                   navigate("/hackathons");
                   console.log("workdone");
                 }
-
+setSelectedTechnologies([]);
+setSelectedPerks([]);
                 action.resetForm();
-              }
-            
-            
-            }
+              }}
 
               // dispatch(addHackathon(values));
-
-              
             >
               {(formik) => (
                 <div className="">
@@ -304,174 +300,181 @@ function AddHackathonForm() {
                         </div>
                       </div>
                     </div>
+                    <div>
+                      <div className="grid grid-cols-2 gap-1 ">
+                        {/* Registration Start */}
+                        <div className="flex flex-col -mx-3  ">
+                          <div className="w-full px-3 mb-5">
+                            <label
+                              htmlFor="registrationStart"
+                              className="text-xs font-semibold px-1"
+                            >
+                              Registration Start
+                            </label>
+                            <Field
+                              type="date"
+                              id="registrationStart"
+                              name="registrationStart"
+                              className="w-fit  text-center  py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500"
+                              placeholder=""
+                            />
+                            <ErrorMessage
+                              name="registrationStart"
+                              component="div"
+                              className="text-xs text-red-500"
+                            />
+                          </div>
+                        </div>
+                        {/*  Max team size input */}
+                        <div className=" -mx-3 ">
+                          <div className="w-full px-3 mb-5">
+                            <label
+                              htmlFor="registrationEnd"
+                              className="text-xs font-semibold px-1"
+                            >
+                              Registration End
+                            </label>
+                            <Field
+                              type="date"
+                              id="registrationEnd"
+                              name="registrationEnd"
+                              className="w-fit  text-center  py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500"
+                              placeholder="johnsmith@example.com"
+                            />
+                            <ErrorMessage
+                              name="registrationEnd"
+                              component="div"
+                              className="text-xs text-red-500"
+                            />
+                          </div>
+                        </div>
 
-                    {/*dates section */}
-                    <div className="flex flex-col lg:flex-row gap-1">
-                      {/* Registration Start */}
-                      <div className="flex -mx-3 ">
-                        <div className="w-full px-3 mb-5">
-                          <label
-                            htmlFor="registrationStart"
-                            className="text-xs font-semibold px-1"
-                          >
-                            Registration Start
-                          </label>
-                          <Field
-                            type="date"
-                            id="registrationStart"
-                            name="registrationStart"
-                            className="w-full  text-center  py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500"
-                            placeholder=""
-                          />
-                          <ErrorMessage
-                            name="registrationStart"
-                            component="div"
-                            className="text-xs text-red-500"
-                          />
+                        {/*  Max team size input */}
+                        <div className="  flex flex-col -mx-3  ">
+                          <div className="w-full px-3 mb-5 ">
+                            <label
+                              htmlFor="hackathonStart"
+                              className="text-xs font-semibold px-1"
+                            >
+                              Hackathon Start
+                            </label>
+                            <Field
+                              type="date"
+                              id="hackathonStart"
+                              name="hackathonStart"
+                              className="w-fit  text-center  py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500"
+                              placeholder="johnsmith@example.com"
+                            />
+                            <ErrorMessage
+                              name="hackathonStart"
+                              component="div"
+                              className="text-xs text-red-500"
+                            />
+                          </div>
+                        </div>
+
+                        {/*  Max team size input */}
+                        <div className="flex -mx-3 ">
+                          <div className="w-full px-3 mb-5 ">
+                            <label
+                              htmlFor="hackathonEnd"
+                              className="text-xs font-semibold px-1"
+                            >
+                              Hackathon End
+                            </label>
+                            <Field
+                              type="date"
+                              id="hackathonEnd"
+                              name="hackathonEnd"
+                              className="w-fit  text-center  py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500"
+                              placeholder="johnsmith@example.com"
+                            />
+                            <ErrorMessage
+                              name="hackathonEnd"
+                              component="div"
+                              className="text-xs text-red-500"
+                            />
+                          </div>
                         </div>
                       </div>
-                      {/*  Max team size input */}
-                      <div className="flex -mx-3 ">
-                        <div className="w-full px-3 mb-5">
-                          <label
-                            htmlFor="registrationEnd"
-                            className="text-xs font-semibold px-1"
-                          >
-                            Registration End
-                          </label>
-                          <Field
-                            type="date"
-                            id="registrationEnd"
-                            name="registrationEnd"
-                            className="w-full  text-center  py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500"
-                            placeholder="johnsmith@example.com"
-                          />
-                          <ErrorMessage
-                            name="registrationEnd"
-                            component="div"
-                            className="text-xs text-red-500"
-                          />
-                        </div>
-                      </div>
+                      {/*multi select section */}
 
-                      {/*  Max team size input */}
-                      <div className="flex -mx-3 ">
-                        <div className="w-full px-3 mb-5">
-                          <label
-                            htmlFor="hackathonStart"
-                            className="text-xs font-semibold px-1"
-                          >
-                            Hackathon Start
-                          </label>
-                          <Field
-                            type="date"
-                            id="hackathonStart"
-                            name="hackathonStart"
-                            className="w-full  text-center  py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500"
-                            placeholder="johnsmith@example.com"
-                          />
-                          <ErrorMessage
-                            name="hackathonStart"
-                            component="div"
-                            className="text-xs text-red-500"
-                          />
-                        </div>
-                      </div>
-
-                      {/*  Max team size input */}
-                      <div className="flex -mx-3 ">
-                        <div className="w-full px-3 mb-5">
-                          <label
-                            htmlFor="hackathonEnd"
-                            className="text-xs font-semibold px-1"
-                          >
-                            Hackathon End
-                          </label>
-                          <Field
-                            type="date"
-                            id="hackathonEnd"
-                            name="hackathonEnd"
-                            className="w-full  text-center  py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500"
-                            placeholder="johnsmith@example.com"
-                          />
-                          <ErrorMessage
-                            name="hackathonEnd"
-                            component="div"
-                            className="text-xs text-red-500"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex -mx-3 ">
-                      <div className="w-full px-3 mb-5">
-                        <MultiSelectDropdown
-                          labelDropdown="Select Technologies"
-                          labelStack="Tech Stack"
-                          options={[
-                            "No Restrictions",
-                            "BlockChain",
-                            "ReactJs",
-                            "NodeJS",
-                            "AI/ML",
-                            "Deep Learning",
-                          ]}
-                          selectedOptions={selectedTechnologies}
-                          onSelect={(option) => {
-                            setSelectedTechnologies((prevSelectedOptions) => {
-                              if (prevSelectedOptions.includes(option)) {
-                                return prevSelectedOptions.filter(
-                                  (selectedOption) => selectedOption !== option
+                      <div className="flex justify-between">
+                        <div className="flex -mx-3  ">
+                          <div className="w-full px-3 mb-5 border-2 border-gray-300 rounded-md py-2 ml-3">
+                            <MultiSelectDropdown
+                              labelDropdown="Select Technologies"
+                              labelStack="Tech Stack"
+                              options={[
+                                "No Restrictions",
+                                "BlockChain",
+                                "ReactJs",
+                                "NodeJS",
+                                "AI/ML",
+                                "Deep Learning",
+                              ]}
+                              selectedOptions={selectedTechnologies}
+                              onSelect={(option) => {
+                                setSelectedTechnologies(
+                                  (prevSelectedOptions) => {
+                                    if (prevSelectedOptions.includes(option)) {
+                                      return prevSelectedOptions.filter(
+                                        (selectedOption) =>
+                                          selectedOption !== option
+                                      );
+                                    } else {
+                                      return [...prevSelectedOptions, option];
+                                    }
+                                  }
                                 );
-                              } else {
-                                return [...prevSelectedOptions, option];
-                              }
-                            });
-                          }}
-                        />
-                        <ErrorMessage
-                          name="techStacks"
-                          component="div"
-                          className="text-xs text-red-500"
-                        />
-                      </div>
-                    </div>
+                              }}
+                            />
+                            <ErrorMessage
+                              name="techStacks"
+                              component="div"
+                              className="text-xs text-red-500"
+                            />
+                          </div>
+                        </div>
 
-                    <div className="flex -mx-3 ">
-                      <div className="w-full px-3 mb-5">
-                        <MultiSelectDropdown
-                          labelDropdown="Other Perks"
-                          labelStack="Perks"
-                          options={[
-                            "No OtherPerks",
-                            "Accommodation",
-                            "Meals",
-                            "Swags",
-                            "Goodies",
-                            "Internship Opportunities",
-                            "Grants",
-                          ]}
-                          selectedOptions={selectedPerks}
-                          onSelect={(option) => {
-                            setSelectedPerks((prevSelectedOptions) => {
-                              {
-                                /* Change setSelectedOptions to setSelectedPerks */
-                              }
-                              if (prevSelectedOptions.includes(option)) {
-                                return prevSelectedOptions.filter(
-                                  (selectedOption) => selectedOption !== option
-                                );
-                              } else {
-                                return [...prevSelectedOptions, option];
-                              }
-                            });
-                          }}
-                        />
-                        <ErrorMessage
-                          name="perks"
-                          component="div"
-                          className="text-xs text-red-500"
-                        />
+                        <div className="flex -mx-3   ">
+                          <div className="w-full px-3 mb-5 border-2 border-gray-300 rounded-md  py-2 mr-3">
+                            <MultiSelectDropdown
+                              labelDropdown="Other Perks"
+                              labelStack="Perks"
+                              options={[
+                                "No OtherPerks",
+                                "Accommodation",
+                                "Meals",
+                                "Swags",
+                                "Goodies",
+                                "Internship Opportunities",
+                                "Grants",
+                              ]}
+                              selectedOptions={selectedPerks}
+                              onSelect={(option) => {
+                                setSelectedPerks((prevSelectedOptions) => {
+                                  {
+                                    /* Change setSelectedOptions to setSelectedPerks */
+                                  }
+                                  if (prevSelectedOptions.includes(option)) {
+                                    return prevSelectedOptions.filter(
+                                      (selectedOption) =>
+                                        selectedOption !== option
+                                    );
+                                  } else {
+                                    return [...prevSelectedOptions, option];
+                                  }
+                                });
+                              }}
+                            />
+                            <ErrorMessage
+                              name="perks"
+                              component="div"
+                              className="text-xs text-red-500"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
 

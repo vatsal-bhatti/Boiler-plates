@@ -11,6 +11,7 @@ import ViewDetailsPage from "./HackathonPages/ViewDetailsPage";
 import MainListPage from "../common/MainPages/MainListItem";
 import RegisterLogin from "../Login-Register/RegisterLogin";
 import AddHackathonForm from "./HackathonPages/AddHackathonsForm";
+import ApplyNow from "./HackathonPages/ApplyNowPage";
 function Layout() {
   return (
     <div>
@@ -18,13 +19,14 @@ function Layout() {
       {/* <Outlet /> */}
       {/* <MainPage /> */}
       {/* <HackathonsPage/> */}
-      <HostHackathonsPage/>
+      {/* <HostHackathonsPage/> */}
       {/* <AdminMainPage/> */}
       {/* <ParticipantProfile /> */}
       {/* <ViewDetailsPage/> */}
       {/* <MainListPage/> */}
       {/* <RegisterLogin login={false}/> */}
        {/* <AddHackathonForm/> */}
+       <ApplyNow/>
       <Footer id="footer" />
      
     </div>

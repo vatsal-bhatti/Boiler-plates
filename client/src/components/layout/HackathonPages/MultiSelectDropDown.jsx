@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef,useState } from "react";
 
-function MultiSelectDropdown({ options, selectedOptions, onSelect,labelDropdown,labelStack }) {
+function MultiSelectDropdown({ options, selectedOptions, onSelect,labelDropdown,labelStack ,ifFull}) {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef(null);
 
@@ -20,7 +20,7 @@ function MultiSelectDropdown({ options, selectedOptions, onSelect,labelDropdown,
   }, []);
 
   return (
-    <div className="md:w-[355px]  " ref={wrapperRef}>
+    <div className={`${ifFull?"w-full" :"md:w-[355px]"}  `} ref={wrapperRef}>
       <div className="mb-5">
         <h2 className="text-gray-500 text-xs font-semibold mb-[2px]">{labelStack}</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 w-full  gap-1 h-auto ">

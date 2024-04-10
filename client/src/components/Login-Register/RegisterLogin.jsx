@@ -314,7 +314,7 @@ function RegisterLogin({ login }) {
                       navigate("/login")
                     }
                   }
-                  action.resetForm();
+                  // action.resetForm();
                 }}
               >
                 {(formik) => (

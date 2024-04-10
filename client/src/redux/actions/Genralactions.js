@@ -142,6 +142,36 @@ console.log(data.id);
         }
         break;
 
+        case "addHackathonApplication":
+  
+        
+        
+        const newHackathonApplication = {
+          
+            id: data.id,
+            hackathonId: data.hackathonId,
+            hackathonName: data.hackathonId,
+            applicationStatus: "pending",
+            leaderId: data.leaderId,
+            teamDetails:data.teamDetails,
+            problemStatementAbstract: data.problemStatementAbstract,
+            solutionStatement: "",
+            technologyUsed: data.technologyUsed
+          
+        }
+        console.log(newHackathonApplication.id)
+
+        result = await postMethod(
+          
+          "http://localhost:8000/hackathonApplications", JSON.stringify(newHackathonApplication)
+        );
+        console.log(result);
+        // if (result.success) {
+        //   workSuccess(true);
+         
+        // }
+        break;
+
       // if (result.success === true) dispatch(setRole(result.data, role));
 
       default:

@@ -22,6 +22,51 @@ export const LoginSchema = Yup.object({
 
 
 
+export const ApplyNowSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Too Short!')
+    .max(25, 'Too Long!')
+    .required('Required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Required'),
+  gender: Yup.string()
+    .oneOf(['Male', 'Female', 'Other'], 'Invalid gender')
+    .required('Required'),
+  // teamMembers: Yup.number()
+  //   .min(1, 'Too few members')
+  //   .max(5, 'Too many members')
+  //   .required('Required'),
+  teamDetails: Yup.array()
+    .of(
+      Yup.object().shape({
+        name: Yup.string()
+          .min(2, 'Too Short!')
+          .max(25, 'Too Long!')
+          .required('Required'),
+        email: Yup.string()
+          .email('Invalid email')
+          .required('Required'),
+        gender: Yup.string()
+          .oneOf(['Male', 'Female', 'Other'], 'Invalid gender')
+          .required('Required'),
+      })
+    )
+    .required('Must have team members')
+    .min(1, 'Minimum of 1 team members'),
+  problemStatementAbstract: Yup.string()
+    .min(50, 'Too Short!')
+    .max(1000, 'Too Long!')
+    .required('Required'),
+  // technologyUsed: Yup.array()
+  //   .of(Yup.string().oneOf(['No Restrictions', 'BlockChain', 'ReactJs', 'NodeJS', 'AI/ML', 'Deep Learning'], 'Invalid technology'))
+  //   .required('Must select at least one technology'),
+});
+
+
+
+
+
 export const AddHackathonFormSchema = Yup.object({
   name: Yup.string().min(2).max(25).required("Please enter the hackathon name"),
   tagline: Yup.string().min(10).max(100).required("Please enter hackathon tagline"),
