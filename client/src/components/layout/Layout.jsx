@@ -10,22 +10,23 @@ import ParticipantProfile from "./ParticipantPages/ParticipantProfile";
 import ViewDetailsPage from "./HackathonPages/ViewDetailsPage";
 import MainListPage from "../common/MainPages/MainListItem";
 import RegisterLogin from "../Login-Register/RegisterLogin";
-import AddHackathonForm from "./HackathonPages/addHackathonsForm";
+import AddHackathonForm from "./HackathonPages/AddHackathonsForm";
 function Layout() {
   return (
     <div>
       <Navbar />
-      <Outlet />
+      {/* <Outlet /> */}
       {/* <MainPage /> */}
       {/* <HackathonsPage/> */}
-      {/* <HostHackathonsPage/> */}
+      <HostHackathonsPage/>
       {/* <AdminMainPage/> */}
       {/* <ParticipantProfile /> */}
       {/* <ViewDetailsPage/> */}
       {/* <MainListPage/> */}
       {/* <RegisterLogin login={false}/> */}
-      {/* <Footer id="footer" /> */}
-      <AddHackathonForm/>
+       {/* <AddHackathonForm/> */}
+      <Footer id="footer" />
+     
     </div>
   );
 }

@@ -6,6 +6,7 @@ import MainProfilePage from "./MainProfilePage";
 import MainListItem from "./MainListItem";
 import Card from "../Card";
 import RegisterLogin from "../../Login-Register/RegisterLogin";
+import AddHackathonForm from "../../layout/HackathonPages/AddHackathonsForm";
 
 function MainPage({ buttonMembers, currentMember, role }) {
   const [userRole, setUserRole] = useState(null);
@@ -123,7 +124,7 @@ function MainPage({ buttonMembers, currentMember, role }) {
       case "addNewHackathon":
         return (
           <>
-            <div>add New Hackathon Form</div>
+            <AddHackathonForm/>
           </>
         );
       case "addNewUser":
