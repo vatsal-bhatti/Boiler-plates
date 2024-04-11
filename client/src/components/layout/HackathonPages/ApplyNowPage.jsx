@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
+
 import { useDispatch, useSelector } from "react-redux";
 // import { addHackathon } from "../../redux/actions/HackathonActions";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MultiSelectDropdown from "./MultiSelectDropDown";
 import { ApplyNowSchema } from "../../common/Schemas/Schemas";
 import {
@@ -17,33 +18,68 @@ function ApplyNow({}) {
   const navigate = useNavigate();
   const [selectedTechnologies, setSelectedTechnologies] = useState([]);
   const [teamSize, setTeamSize] = useState(1);
-
+const [teamMembers,setTeamMembers] = useState([])
   const [hackathonsApplications, setHackathonsApplications] = useState([]);
-const HackthonId = 1;
-  const minTeam = 1;
-  const maxTeam = 5;
-  let teamMembers;
-  const LeaderId =1;
-  if (minTeam === 1) {
-    teamMembers = Array.from(
-      { length: maxTeam - minTeam + 1 },
-      (_, i) => minTeam + 1 + i
-    );
-  } else {
-    teamMembers = Array.from(
-      { length: maxTeam - minTeam + 1 },
-      (_, i) => minTeam + i
-    );
+  const [hackathonDetails, setHackathonDetails] = useState([]);
+  
+
+ 
+  const { hackathonId } = useParams();
+
+
+let minTeam =1 ,maxTeam =5;
+  
+const LeaderId =1;
+ 
+  
+ 
+  
+useEffect(() => {
+  if (hackathonDetails && hackathonDetails.teamSize) {
+    // const HackthonId = parseInt(hackathonDetails.id);
+    const minTeam = parseInt(hackathonDetails.teamSize.min);
+    const maxTeam = parseInt(hackathonDetails.teamSize.max);
+    // if(minTeam === 1)
+    // setTeamSize(2);
+    setTeamSize(minTeam);
+    console.log(typeof minTeam)
+
+    let teamMembersArray;
+    if (minTeam === 1) {
+      teamMembersArray = Array.from(
+        { length: maxTeam - minTeam + 1 },
+        (_, i) => minTeam + 1 + i
+      );
+    } else {
+      teamMembersArray = Array.from(
+        { length: maxTeam - minTeam + 1 },
+        (_, i) => minTeam + i
+      );
+    }
+    setTeamMembers(teamMembersArray);
   }
+}, [hackathonDetails]);
+
+// Ensure the useEffect dependency array includes hackathonDetails to avoid infinite loops
+
+
+
 
   console.log(teamMembers);
   useEffect(() => {
     dispatch(generalThunkFunction("getAllHackathonsApplications"));
+    dispatch(generalThunkFunction("getAllHackathons"));
   }, []);
 
   useEffect(() => {
     setHackathonsApplications(generalState.hackathonApplications);
+    const hackathon = generalState.hackathons.find((hackathon) => hackathon.id === hackathonId);
+    console.log(hackathon);
+    setHackathonDetails(hackathon);
   }, [generalState]);
+
+
+  
 
   const initialValues = {
     name: "",
@@ -62,9 +98,9 @@ const HackthonId = 1;
           <div className="w-full md:w-fit mx-auto py-10 px-5 md:px-10 ">
             <div className="text-center mb-10">
               <h1 className="font-bold text-3xl text-gray-900">
-                Add New Hackathon
+               {hackathonDetails?hackathonDetails.name   :"APPLY NOW"}
               </h1>
-              <p>Enter the details of the new hackathon</p>
+              <p>Enter the details to Apply in Hackathon</p>
             </div>
 
             <Formik
@@ -78,13 +114,13 @@ const HackthonId = 1;
                 console.log(values.teamDetails);
                 const ApplicationDetails = {
                   id:applicationId,
-                  hackathonId:HackthonId,
-                  hackathonName:"Innovate-a-thon",
+                  hackathonId:parseInt(hackathonDetails.id),
+                  hackathonName:hackathonDetails.name,
                   leaderId:LeaderId,
                   name: values.name,
                   email: values.email,
                   gender: values.gender,
-                  teamMembers: "number",
+                  teamMembers: teamSize,
                   teamDetails: values.teamDetails,
                   problemStatementAbstract: values.problemStatementAbstract,
                   technologyUsed: selectedTechnologies,
@@ -133,7 +169,7 @@ const HackthonId = 1;
                           id="name"
                           name="name"
                           className="w-full  text-center py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500"
-                          placeholder="ETH India"
+                          placeholder="Vatsal Bhatti"
                         />
                         <ErrorMessage
                           name="name"
@@ -157,7 +193,7 @@ const HackthonId = 1;
                           id="email"
                           name="email"
                           className="w-full  text-center py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500"
-                          placeholder="Biggest Ethereum Hackathon "
+                          placeholder="abc@gmail.com"
                         />
                         <ErrorMessage
                           name="email"
@@ -208,8 +244,8 @@ const HackthonId = 1;
                         >
                           Team Members
                         </label>
-                        <div className="grid grid-cols-5 gap-1">
-                          {teamMembers.map((member) => (
+                        <div className="grid grid-cols-5 gap-1 ">
+                          {hackathonDetails?teamMembers.map((member) => (
                             <div className="flex ">
                               <label
                                 htmlFor="teamMin"
@@ -230,7 +266,7 @@ const HackthonId = 1;
                                 placeholder="number"
                               />
                             </div>
-                          ))}
+                          )):null}
                         </div>
 
                         {/* <ErrorMessage
@@ -240,12 +276,16 @@ const HackthonId = 1;
                         /> */}
                       </div>
                     </div>
+
+{teamSize===1 ?(<><div className=" w-[307.2px] md:w-[644.8px] lg:w-[745.55px] text-center">
+  Only One Team Member 
+  </div></>):<div className="w-full ">
                     <FieldArray name="teamDetails">
                       {({ insert, remove, push }) => (
                         <div>
                           {Array.from({ length: teamSize - 1 }).map((_, i) => (
-                            <div className="flex" key={i}>
-                              <div className="w-full px-3 mb-5">
+                            <div className="flex flex-col md:flex-row" key={i}>
+                              <div className="w-full px-3 mb-5 ">
                                 <label
                                   htmlFor={`teamDetails.${i}.name`}
                                   className="text-xs font-semibold px-1"
@@ -291,7 +331,7 @@ const HackthonId = 1;
                                 <Field
                                   as="select"
                                   name={`teamDetails.${i}.gender`}
-                                  className="w-full py-[2px]"
+                                  className="w-[185px] md:w-full py-[2px]"
                                 >
                                   <option value="" disabled defaultValue>
                                     Select Gender
@@ -312,6 +352,11 @@ const HackthonId = 1;
                         </div>
                       )}
                     </FieldArray>
+                    </div>}
+
+
+                    
+                    
 
                     {/*  Max team size input */}
                     <div className="flex -mx-3 ">
@@ -327,7 +372,7 @@ const HackthonId = 1;
                           id="problemStatementAbstract"
                           name="problemStatementAbstract"
                           className="w-full  text-center  py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500"
-                          placeholder="number"
+                          placeholder="Problem Statement Abstract"
                         />
                         <ErrorMessage
                           name="problemStatementAbstract"
@@ -345,7 +390,7 @@ const HackthonId = 1;
                           labelDropdown="Select Technologies"
                           labelStack="Tech Stack"
                           ifFull={true}
-                          options={[
+                          options={hackathonDetails?hackathonDetails.techstacks:[
                             "No Restrictions",
                             "BlockChain",
                             "ReactJs",

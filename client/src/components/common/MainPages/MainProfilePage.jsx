@@ -3,7 +3,13 @@ import Animation from "../Animation/Animation";
 import MaleAnimation from "../../../utils/Profile Page/Male Avatar.json"
 import FemaleAnimation from "../../../utils/Profile Page/Female Avatar.json"
 import HostAnimation from "../../../utils/Profile Page/HostAnimation.json"
+import { Button } from "../Button";
+import { useNavigate } from "react-router-dom";
 function MainProfilePage({name,tagline,designation,about,role,gender}) {
+
+const navigate = useNavigate();
+
+
   return (
     <>
       <section className="text-gray-600 body-font overflow-hidden">
@@ -37,6 +43,67 @@ function MainProfilePage({name,tagline,designation,about,role,gender}) {
             </svg>
           </button>
         </div> */}
+
+
+<div className="flex flex-col md:flex-row justify-center gap-1 mt-5">
+  {role === "Host" && (
+    <>
+      <Button
+        variant="green"
+        buttonStyle="m-0 bg-green-500 font-bold py-4"
+        onClick={() => navigate(`/HostDashBoard/1`)}
+      >
+        {role} Dashboard
+      </Button>
+      <Button
+        onClick={() => navigate(`/addNewHackathon`)}
+        variant="primary"
+        buttonStyle="m-0 bg-blue-500 font-bold py-4"
+      >
+        Add New Hackathon
+      </Button>
+    </>
+  )}
+  {role === "Admin" && (<>
+  
+    <Button
+      variant="green"
+      buttonStyle="m-0 bg-green-500 font-bold py-4"
+      onClick={() => navigate(`/addNewUser`)}
+    >
+      Add New User
+    </Button>
+
+    <Button
+      variant="green"
+      buttonStyle="m-0 bg-yellow-500 font-bold py-4"
+      onClick={() => navigate(`/AdminDashBoard`)}
+    >
+      {role} Dashboard
+    </Button>
+
+      <Button
+      onClick={() => navigate(`/addNewHackathon`)}
+      variant="primary"
+      buttonStyle="m-0 bg-blue-500 font-bold py-4"
+    >
+      Add New Hackathon
+    </Button>
+  
+  </>
+   
+  )}
+  {role === "Participant"  && (
+    <Button
+      variant="green"
+      buttonStyle="m-0 bg-green-500 font-bold py-4"
+      onClick={() => navigate(`/ParticipantDashBoard/:participantId`)}
+    >
+      {role} Dashboard
+    </Button>
+  )}
+</div>
+
             </div>
           </div>
         </div>

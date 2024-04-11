@@ -16,7 +16,7 @@ function Layout() {
   return (
     <div>
       <Navbar />
-      {/* <Outlet /> */}
+      <Outlet />
       {/* <MainPage /> */}
       {/* <HackathonsPage/> */}
       {/* <HostHackathonsPage/> */}
@@ -26,7 +26,7 @@ function Layout() {
       {/* <MainListPage/> */}
       {/* <RegisterLogin login={false}/> */}
        {/* <AddHackathonForm/> */}
-       <ApplyNow/>
+       {/* <ApplyNow/> */}
       <Footer id="footer" />
      
     </div>

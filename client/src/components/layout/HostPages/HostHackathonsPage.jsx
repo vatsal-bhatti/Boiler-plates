@@ -2,13 +2,7 @@ import React from "react";
 import MainPage from "../../common/MainPages/MainPage";
 
 function HostHackathonsPage() {
-  const groupButtonMembers = [
-    "HostProfile",
-    "open",
-    "past",
-    "upComing",
-    "addNewHackathon",
-  ];
+  const groupButtonMembers = ["open", "past", "upComing"];
 
   return (
     <>
