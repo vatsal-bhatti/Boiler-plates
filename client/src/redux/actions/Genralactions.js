@@ -17,8 +17,32 @@ const getCurrentDate = () => {
   };
 };
 
+// const compareDates = (dateString, comparisonType) => {
+//   const currentDate = getCurrentDate();
+//   const givenDate = {
+//     year: parseInt(dateString.substring(0, 4)),
+//     month: parseInt(dateString.substring(5, 7)),
+//     day: parseInt(dateString.substring(8, 10))
+//   };
+
+//   const currentDateValue = currentDate.year * 10000 + currentDate.month * 100 + currentDate.day;
+//   const givenDateValue = givenDate.year * 10000 + givenDate.month * 100 + givenDate.day;
+
+//   if (comparisonType === "equal") {
+//     return currentDateValue === givenDateValue;
+//   } else if (comparisonType === "greaterThan") {
+//     return currentDateValue < givenDateValue;
+//   } else if (comparisonType === "lessThan") {
+//     return currentDateValue > givenDateValue;
+//   } else {
+//     throw new Error("Invalid comparison type");
+//   }
+// };
+
+
 const compareDates = (dateString, comparisonType) => {
-  const currentDate = getCurrentDate();
+  const currentDate =parseInt(getCurrentDate());
+  console.log(typeof currentDate)
   const givenDate = {
     year: parseInt(dateString.substring(0, 4)),
     month: parseInt(dateString.substring(5, 7)),
@@ -35,10 +59,9 @@ const compareDates = (dateString, comparisonType) => {
   } else if (comparisonType === "lessThan") {
     return currentDateValue > givenDateValue;
   } else {
-    throw new Error("Invalid comparison type");
+    throw new Error("Invalid comparison type"); // This error is thrown when the comparison type is invalid
   }
 };
-
 console.log(compareDates("2024-06-03", "greaterThan")); // true
 console.log(compareDates("2024-04-11", "equal")); // true
 
@@ -99,36 +122,47 @@ export function generalThunkFunction(methodName, data) {
         }
 
         break;
-      case "getAllHackathons":
-        result = await getUsers("hosts", "http://localhost:8000/hackathons");
-        if (result.success) {
-
-console.log(result.data);
-
-
-const newResult = result.data.map((hackathon) => {
-  if (compareDates(hackathon.dates.registrationStart,"equal")) {
-    return { ...hackathon, hackathonStatus: "Open" };
-  } 
-  else if(compareDates(hackathon.dates.registrationStart,"lessThan"))
-  return { ...hackathon, hackathonStatus: "UpComing" };
-  else if(compareDates(hackathon.dates.registrationEnd,"lessThan"))
-  return { ...hackathon, hackathonStatus: "RegistrationClosed" };
-  else if(compareDates(hackathon.dates.hackathonStart,"equal")  || (compareDates(hackathon.dates.hackathonStart,"greaterThan")&& compareDates(hackathon.dates.hackathonEnd,"lessThan")) )
-  return { ...hackathon, hackathonStatus: "Running" };
-  else if(compareDates(hackathon.dates.hackathonEnd,"greaterThan") )
-  return { ...hackathon, hackathonStatus: "Closed" };
-  else {
-    return hackathon; // Return the hackathon object unchanged
-  }
-});
-        console.log(newResult)
-
-
-          dispatch(getHackathonsAction(newResult));
-        }
-
-        break;
+        case "getAllHackathons":
+          result = await getUsers("hosts", "http://localhost:8000/hackathons");
+          if (result.success) {
+            const currentDate = getCurrentDate(); // Define currentDate here
+        
+            console.log(result.data);
+        
+            const newResult = result.data.map((hackathon) => {
+              const registrationStart = hackathon.dates.registrationStart;
+              const registrationEnd = hackathon.dates.registrationEnd;
+              const hackathonStart = hackathon.dates.hackathonStart;
+              const hackathonEnd = hackathon.dates.hackathonEnd;
+        
+              if (
+                compareDates(registrationStart,  "lessThan") &&
+                compareDates(registrationEnd, "greaterThan")
+              ) {
+                return { ...hackathon, hackathonStatus: "Open" };
+              } else if (compareDates( registrationStart, "lessThan")) {
+                return { ...hackathon, hackathonStatus: "UpComing" };
+              } else if (compareDates( registrationEnd, "lessThan")) {
+                return { ...hackathon, hackathonStatus: "RegistrationClosed" };
+              } else if (
+                compareDates( hackathonStart, "equal") ||
+                (compareDates(hackathonStart,  "greaterThan") &&
+                  compareDates(hackathonEnd,"lessThan"))
+              ) {
+                return { ...hackathon, hackathonStatus: "Running" };
+              } else if (compareDates( hackathonEnd, "lessThan")) {
+                return { ...hackathon, hackathonStatus: "Closed" };
+              } else {
+                return hackathon; // Return the hackathon object unchanged
+              }
+            });
+        
+            console.log(newResult);
+        
+            dispatch(getHackathonsAction(newResult));
+          }
+          break;
+        
       case "getAllHackathonsApplications":
         result = await getUsers(
           "hackathonApplications",

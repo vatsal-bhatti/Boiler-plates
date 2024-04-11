@@ -10,11 +10,24 @@ export function registrationSuccess(value=false){
 export function setRole(userDetails, role, isAuth) {
   return {
     type: "SET-ROLE",
-    payload: { userDetails: userDetails, role: role, isAuth: true },
+    payload: { userDetails: userDetails, role: role, isAuth: true
+     },
   };
 }
 
 
+export function setLogout() {
+  return {
+    type: "SET-LOGOUT",
+    payload: true,
+  };
+}
+export function setLoginState(loginData) {
+  return {
+    type: "SET-LOGIN-STATE",
+    payload:loginData,
+  };
+}
 
 export function thunkFunction(methodName, data) {
     

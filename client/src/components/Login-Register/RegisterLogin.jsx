@@ -1,4 +1,55 @@
-{/* <div className="hidden md:block w-1/2  bg-blue-500 py-10 px-10">
+
+
+import React, { useEffect, useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { RegisterSchema, LoginSchema } from "../common/Schemas/Schemas";
+import { useDispatch, useSelector } from "react-redux";
+import { thunkFunction } from "../../redux/actions/RegisterLoginActions";
+import { generalThunkFunction } from "../../redux/actions/Genralactions";
+import { useNavigate } from "react-router-dom";
+import { registrationSuccess } from "../../redux/actions/RegisterLoginActions";
+
+function RegisterLogin({ login }) {
+  const loginState = useSelector((state)=>state.registerLoginReducer);
+  const generalState = useSelector((state) => state.generalReducer);
+  console.log(generalState);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [participants, setParticipants] = useState([]);
+  const [hosts, setHosts] = useState([]);
+  const [isLogin, setIsLogin] = useState(false);
+
+  const initialValues = {
+    Name: "",
+    Email: "",
+    Password: "",
+    ConfirmPassword: "",
+    Role: "",
+  };
+  useEffect(() => {
+    setIsLogin(login);
+  }, [login]);
+
+  useEffect(() => {
+    console.log("fetch ran");
+
+    dispatch(generalThunkFunction("getAllParticipants"));
+    dispatch(generalThunkFunction("getAllHosts"));
+  }, []);
+
+  useEffect(() => {
+    setParticipants(generalState.participants);
+    setHosts(generalState.hosts);
+    console.log(participants);
+    console.log(hosts);
+  }, [generalState]);
+
+  return (
+    <>
+      <div className="min-w-screen min-h-screen bg-white flex items-center justify-center px-5 py-5">
+        <div className="bg-gray-100 text-gray-500 rounded-lg shadow-lg shadow-blue-500  w-full overflow-hidden max-w-[1000px]">
+          <div className="md:flex w-full">
+          <div className="hidden md:block w-1/2  bg-blue-500 py-10 px-10">
 <svg
   id="a87032b8-5b37-4b7e-a4d9-4dbfbe394641"
   data-name="Layer 1"
@@ -202,58 +253,7 @@
     fill="#2f2e41"
   />
 </svg>
-</div> */}
-
-import React, { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { RegisterSchema, LoginSchema } from "../common/Schemas/Schemas";
-import { useDispatch, useSelector } from "react-redux";
-import { thunkFunction } from "../../redux/actions/RegisterLoginActions";
-import { generalThunkFunction } from "../../redux/actions/Genralactions";
-import { useNavigate } from "react-router-dom";
-import { registrationSuccess } from "../../redux/actions/RegisterLoginActions";
-
-function RegisterLogin({ login }) {
-  const loginState = useSelector((state)=>state.registerLoginReducer);
-  const generalState = useSelector((state) => state.generalReducer);
-  console.log(generalState);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [participants, setParticipants] = useState([]);
-  const [hosts, setHosts] = useState([]);
-  const [isLogin, setIsLogin] = useState(false);
-
-  const initialValues = {
-    Name: "",
-    Email: "",
-    Password: "",
-    ConfirmPassword: "",
-    Role: "",
-  };
-  useEffect(() => {
-    setIsLogin(login);
-  }, [login]);
-
-  useEffect(() => {
-    console.log("fetch ran");
-
-    dispatch(generalThunkFunction("getAllParticipants"));
-    dispatch(generalThunkFunction("getAllHosts"));
-  }, []);
-
-  useEffect(() => {
-    setParticipants(generalState.participants);
-    setHosts(generalState.hosts);
-    console.log(participants);
-    console.log(hosts);
-  }, [generalState]);
-
-  return (
-    <>
-      <div className="min-w-screen min-h-screen bg-white flex items-center justify-center px-5 py-5">
-        <div className="bg-gray-100 text-gray-500 rounded-lg shadow-lg shadow-blue-500  w-full overflow-hidden max-w-[1000px]">
-          <div className="md:flex w-full">
-           {/* <svg></svg> */}
+</div>
 
             <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
               <div className="text-center mb-10">

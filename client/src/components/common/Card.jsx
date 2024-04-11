@@ -7,13 +7,15 @@ import { formatDate } from "../../redux/actions/Genralactions";
 function Card({ cardData }) {
   const generalState = useSelector((state) => state.generalReducer);
   console.log(cardData);
+
   const navigate = useNavigate();
+  let participantPastHackathons = ["2"];
+  let participantAppliedHacathons = ["4"];
   let themeArray = cardData && cardData.techstacks ? cardData.techstacks : [];
 
   themeArray = themeArray.map((theme) => {
     return theme ? theme.toUpperCase() : "";
   });
-  
 
   const startDate =
     cardData && cardData.hackathonStatus
@@ -98,7 +100,9 @@ function Card({ cardData }) {
                     : "bg-gray-200"
                 }  border-0 border-gray-100 rounded-2xl text-sm md:text-base`}
               >
-                {cardData && cardData.hackathonStatus ? cardData.hackathonStatus.toUpperCase() : ""}
+                {cardData && cardData.hackathonStatus
+                  ? cardData.hackathonStatus.toUpperCase()
+                  : ""}
               </div>
             )}
 
@@ -109,7 +113,7 @@ function Card({ cardData }) {
             )}
 
             <div className="font-semibold text-gray-800 py-3 px-6 w-fit bg-gray-100 border-0 border-gray-100 rounded-2xl text-sm md:text-base">
-            {cardData && cardData.mode ? cardData.mode.toUpperCase() : ""}
+              {cardData && cardData.mode ? cardData.mode.toUpperCase() : ""}
             </div>
 
             <div className="font-semibold text-gray-800 py-3 px-4 w-fit bg-gray-100 border-0 border-gray-100 rounded-2xl text-sm md:text-base">
@@ -121,28 +125,53 @@ function Card({ cardData }) {
             </div>
           </div>
           <div className="w-full flex items-center justify-center gap-x-7">
-            <Button
-              variant="green"
-              buttonStyle="m-0 bg-green-500 font-bold py-4 px-6"
-              onClick={() => navigate(`/viewDetailPage/${cardData.id}`)}
-            >
-              View Details
-            </Button>
+          {cardData && (
+  <div className="w-full flex items-center justify-center gap-x-7">
+    {cardData.hackathonStatus &&
+      (cardData.hackathonStatus.toUpperCase() === "OPEN" ||
+        cardData.hackathonStatus.toUpperCase() === "CLOSED") ? (<>
+        
+        
 
-            {cardData &&
-            cardData.hackathonStatus &&
-            (cardData.hackathonStatus.toUpperCase() === "OPEN" ||
-              cardData.hackathonStatus.toUpperCase() === "CLOSED") ? (
-              <Button
-                onClick={() => navigate(`/applyNow/${cardData.id}`)}
-                variant="primary"
-                buttonStyle="m-0 bg-blue-500 font-bold py-4 px-6"
-              >
-                {cardData.hackathonStatus.toUpperCase() === "OPEN"
-                  ? "Apply Now"
-                  : "See Projects"}
-              </Button>
-            ) : null}
+      <Button
+        onClick={() => navigate(`/applyNow/${cardData.id}`)}
+        variant="primary"
+        buttonStyle="m-0 bg-blue-500 font-bold py-4 px-6"
+      >
+        {cardData.hackathonStatus.toUpperCase() === "OPEN" ||
+        !participantPastHackathons.includes(cardData.id)
+          ? "Apply Now"
+          : "See Projects"}
+      </Button>
+        
+        </>
+         
+    ) : null}
+
+    {participantAppliedHacathons.includes(cardData.id) ||cardData.hackathonStatus.toUpperCase() === "OPEN" ? (
+      <Button
+        variant="green"
+        buttonStyle="m-0 bg-green-500 font-bold py-4 px-6"
+        onClick={() => navigate(`/viewDetailPage/${cardData.id}`)}
+      >
+        View Details
+      </Button>
+    ) : participantPastHackathons.includes(cardData.id) ? (<>
+    
+    <Button
+      variant="green"
+      buttonStyle="m-0 bg-green-500 font-bold py-4 px-6"
+      onClick={() => navigate(`/viewDetailPage/${cardData.id}`)}
+    >
+      View Details
+    </Button>
+     
+    
+    </>
+     
+    ) : null}
+  </div>
+)}
           </div>
         </div>
       </div>
