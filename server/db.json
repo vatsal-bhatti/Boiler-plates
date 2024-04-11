@@ -6,13 +6,8 @@
       "email": "ravi@example.com",
       "password": "password123",
       "phoneNumber": "123-456-7890",
-      "roles": [
-        "host"
-      ],
-      "pastHackathons": [
-        1,
-        2
-      ],
+      "roles": ["host"],
+      "pastHackathons": [1, 2],
       "description": "Passionate about fostering innovation and building communities. Experienced in organizing successful hackathons."
     },
     {
@@ -21,12 +16,8 @@
       "email": "priya@example.com",
       "password": "password456",
       "phoneNumber": "987-654-3210",
-      "roles": [
-        "host"
-      ],
-      "pastHackathons": [
-        3
-      ],
+      "roles": ["host"],
+      "pastHackathons": [3],
       "description": "Tech enthusiast with a vision to empower the next generation of innovators. Committed to creating impactful hackathon experiences."
     },
     {
@@ -35,12 +26,8 @@
       "email": "amit@example.com",
       "password": "password789",
       "phoneNumber": "789-012-3456",
-      "roles": [
-        "host"
-      ],
-      "pastHackathons": [
-        4
-      ],
+      "roles": ["host"],
+      "pastHackathons": [4],
       "description": "Innovative thinker and problem solver. Dedicated to driving positive change through technology and collaboration."
     },
     {
@@ -49,12 +36,8 @@
       "email": "anjali@example.com",
       "password": "passwordabc",
       "phoneNumber": "012-345-6789",
-      "roles": [
-        "host"
-      ],
-      "pastHackathons": [
-        5
-      ],
+      "roles": ["host"],
+      "pastHackathons": [5],
       "description": "Experienced leader with a passion for empowering diverse teams. Committed to fostering an inclusive and supportive hackathon environment."
     },
     {
@@ -63,12 +46,8 @@
       "email": "vijay@example.com",
       "password": "passworddef",
       "phoneNumber": "345-678-9012",
-      "roles": [
-        "host"
-      ],
-      "pastHackathons": [
-        6
-      ],
+      "roles": ["host"],
+      "pastHackathons": [6],
       "description": "Visionary entrepreneur with a track record of driving innovation. Dedicated to creating opportunities for collaboration and growth."
     },
     {
@@ -77,12 +56,8 @@
       "email": "sunita@example.com",
       "password": "passwordghi",
       "phoneNumber": "456-789-0123",
-      "roles": [
-        "host"
-      ],
-      "pastHackathons": [
-        7
-      ],
+      "roles": ["host"],
+      "pastHackathons": [7],
       "description": "Passionate about technology and innovation. Experienced in hosting hackathons that inspire creativity and problem-solving."
     },
     {
@@ -91,12 +66,8 @@
       "email": "rajesh@example.com",
       "password": "passwordjkl",
       "phoneNumber": "567-890-1234",
-      "roles": [
-        "host"
-      ],
-      "pastHackathons": [
-        8
-      ],
+      "roles": ["host"],
+      "pastHackathons": [8],
       "description": "Committed to fostering a collaborative environment for innovation. Experienced in organizing hackathons that drive technological advancement."
     },
     {
@@ -105,12 +76,8 @@
       "email": "meena@example.com",
       "password": "passwordmno",
       "phoneNumber": "678-901-2345",
-      "roles": [
-        "host"
-      ],
-      "pastHackathons": [
-        9
-      ],
+      "roles": ["host"],
+      "pastHackathons": [9],
       "description": "Dedicated to empowering young innovators through hackathons. Experienced in creating engaging and impactful hackathon experiences."
     },
     {
@@ -119,12 +86,8 @@
       "email": "sanjay@example.com",
       "password": "passwordpqr",
       "phoneNumber": "789-012-3456",
-      "roles": [
-        "host"
-      ],
-      "pastHackathons": [
-        10
-      ],
+      "roles": ["host"],
+      "pastHackathons": [10],
       "description": "Passionate about driving innovation through collaboration. Experienced in hosting hackathons that inspire creative problem-solving."
     },
     {
@@ -133,12 +96,8 @@
       "email": "pooja@example.com",
       "password": "passwordstu",
       "phoneNumber": "890-123-4567",
-      "roles": [
-        "host"
-      ],
-      "pastHackathons": [
-        11
-      ],
+      "roles": ["host"],
+      "pastHackathons": [11],
       "description": "Committed to fostering an inclusive environment for innovation. Experienced in organizing hackathons that drive positive change."
     },
     {
@@ -146,9 +105,7 @@
       "firstName": "vatsal",
       "email": "vatsalb5475@gmail.com",
       "password": "123456",
-      "roles": [
-        "host"
-      ],
+      "roles": ["host"],
       "gender": "",
       "pastHackathons": [],
       "phoneNumber": "",
@@ -159,9 +116,7 @@
       "firstName": "vatsal",
       "email": "vatsalb5475@gmail.com",
       "password": "123456",
-      "roles": [
-        "host"
-      ],
+      "roles": ["host"],
       "gender": "",
       "pastHackathons": [],
       "phoneNumber": "",
@@ -172,9 +127,7 @@
       "firstName": "vatsal",
       "email": "vatsalb5475@gmail.com",
       "password": "123456",
-      "roles": [
-        "host"
-      ],
+      "roles": ["host"],
       "gender": "",
       "pastHackathons": [],
       "phoneNumber": "",
@@ -185,9 +138,7 @@
       "firstName": "divyarajsinh",
       "email": "rushibhatti33@gmail.com",
       "password": "123456",
-      "roles": [
-        "host"
-      ],
+      "roles": ["host"],
       "gender": "",
       "pastHackathons": [],
       "phoneNumber": "",
@@ -198,9 +149,7 @@
       "firstName": "divyarajsinh",
       "email": "rushibhatti33@gmail.com",
       "password": "123456",
-      "roles": [
-        "host"
-      ],
+      "roles": ["host"],
       "gender": "",
       "pastHackathons": [],
       "phoneNumber": "",
@@ -211,9 +160,7 @@
       "firstName": "dipak",
       "email": "raahul@example.com",
       "password": "123456",
-      "roles": [
-        "host"
-      ],
+      "roles": ["host"],
       "gender": "",
       "pastHackathons": [],
       "phoneNumber": "",
@@ -228,12 +175,9 @@
       "email": "rahul@example.com",
       "password": "password123",
       "phoneNumber": "123-456-7890",
-      "roles": [
-        "participant"
-      ],
-      "pastHackathons": [
-        1
-      ],
+      "roles": ["participant"],
+      "appliedHackathons": [1, 4],
+      "pastHackathons": [1,2],
       "wonHackathons": [
         {
           "hackathonId": 1,
@@ -268,13 +212,8 @@
       "email": "priya@example.com",
       "password": "password456",
       "phoneNumber": "987-654-3210",
-      "roles": [
-        "participant"
-      ],
-      "pastHackathons": [
-        2,
-        3
-      ],
+      "roles": ["participant"],
+      "pastHackathons": [2, 3],
       "wonHackathons": [
         {
           "hackathonId": 1,
@@ -309,12 +248,8 @@
       "email": "aman@example.com",
       "password": "password789",
       "phoneNumber": "789-012-3456",
-      "roles": [
-        "participant"
-      ],
-      "pastHackathons": [
-        4
-      ],
+      "roles": ["participant"],
+      "pastHackathons": [4],
       "wonHackathons": [
         {
           "hackathonId": 1,
@@ -349,12 +284,8 @@
       "email": "anjali@example.com",
       "password": "passwordabc",
       "phoneNumber": "012-345-6789",
-      "roles": [
-        "participant"
-      ],
-      "pastHackathons": [
-        5
-      ],
+      "roles": ["participant"],
+      "pastHackathons": [5],
       "wonHackathons": [
         {
           "hackathonId": 2,
@@ -389,12 +320,8 @@
       "email": "vikas@example.com",
       "password": "passworddef",
       "phoneNumber": "345-678-9012",
-      "roles": [
-        "participant"
-      ],
-      "pastHackathons": [
-        6
-      ],
+      "roles": ["participant"],
+      "pastHackathons": [6],
       "wonHackathons": [
         {
           "hackathonId": 2,
@@ -429,12 +356,8 @@
       "email": "sneha@example.com",
       "password": "passwordghi",
       "phoneNumber": "678-901-2345",
-      "roles": [
-        "participant"
-      ],
-      "pastHackathons": [
-        7
-      ],
+      "roles": ["participant"],
+      "pastHackathons": [7],
       "wonHackathons": [
         {
           "hackathonId": 2,
@@ -469,12 +392,8 @@
       "email": "ravi@example.com",
       "password": "password123",
       "phoneNumber": "123-456-7890",
-      "roles": [
-        "participant"
-      ],
-      "pastHackathons": [
-        1
-      ],
+      "roles": ["participant"],
+      "pastHackathons": [1],
       "wonHackathons": [
         {
           "hackathonId": 3,
@@ -509,13 +428,8 @@
       "email": "pooja@example.com",
       "password": "password456",
       "phoneNumber": "987-654-3210",
-      "roles": [
-        "participant"
-      ],
-      "pastHackathons": [
-        2,
-        3
-      ],
+      "roles": ["participant"],
+      "pastHackathons": [2, 3],
       "wonHackathons": [
         {
           "hackathonId": 3,
@@ -550,12 +464,8 @@
       "email": "amit@example.com",
       "password": "password789",
       "phoneNumber": "789-012-3456",
-      "roles": [
-        "participant"
-      ],
-      "pastHackathons": [
-        4
-      ],
+      "roles": ["participant"],
+      "pastHackathons": [4],
       "wonHackathons": [
         {
           "hackathonId": 3,
@@ -588,9 +498,7 @@
       "firstName": "vatsal",
       "email": "vatsalb5475@gmail.com",
       "password": "123456",
-      "roles": [
-        "participant"
-      ],
+      "roles": ["participant"],
       "gender": "",
       "pastHackathons": [],
       "phoneNumber": "",
@@ -609,13 +517,10 @@
         "1st": "Cash prize",
         "2nd": "Gift vouchers"
       },
-      "techstacks": [
-        "Web development",
-        "Machine learning"
-      ],
+      "techstacks": ["Web development", "Machine learning"],
       "dates": {
-        "registrationStart": "2024-05-01",
-        "registrationEnd": "2024-05-15",
+        "registrationStart": "2024-04-01",
+        "registrationEnd": "2024-04-30",
         "hackathonStart": "2024-06-01",
         "hackathonEnd": "2024-06-03"
       },
@@ -627,7 +532,7 @@
     },
     {
       "id": "2",
-      "hackathonStatus": "past",
+      "hackathonStatus": "Closed",
       "hostId": 2,
       "name": "Code for Impact",
       "tagline": "Hack for Change, Impact the World",
@@ -636,10 +541,7 @@
         "1st": "Scholarship",
         "2nd": "Internship opportunity"
       },
-      "techstacks": [
-        "Mobile app development",
-        "Data analysis"
-      ],
+      "techstacks": ["Mobile app development", "Data analysis"],
       "dates": {
         "registrationStart": "2024-04-01",
         "registrationEnd": "2024-04-15",
@@ -663,10 +565,7 @@
         "1st": "Tech gadgets",
         "2nd": "Training programs"
       },
-      "techstacks": [
-        "AI",
-        "Blockchain"
-      ],
+      "techstacks": ["AI", "Blockchain"],
       "dates": {
         "registrationStart": "2024-07-01",
         "registrationEnd": "2024-07-15",
@@ -691,10 +590,7 @@
         "1st": "Tech gadgets",
         "2nd": "Certificate of Excellence"
       },
-      "techstacks": [
-        "Cybersecurity",
-        "IoT"
-      ],
+      "techstacks": ["Cybersecurity", "IoT"],
       "dates": {
         "registrationStart": "2024-06-01",
         "registrationEnd": "2024-06-15",
@@ -718,10 +614,7 @@
         "1st": "Data science toolkit",
         "2nd": "Online courses"
       },
-      "techstacks": [
-        "Data science",
-        "Data visualization"
-      ],
+      "techstacks": ["Data science", "Data visualization"],
       "dates": {
         "registrationStart": "2024-03-01",
         "registrationEnd": "2024-03-15",
@@ -745,10 +638,7 @@
         "1st": "Coding gadgets",
         "2nd": "Coding books"
       },
-      "techstacks": [
-        "Web development",
-        "Mobile app development"
-      ],
+      "techstacks": ["Web development", "Mobile app development"],
       "dates": {
         "registrationStart": "2024-08-01",
         "registrationEnd": "2024-08-15",
@@ -772,10 +662,7 @@
         "1st": "AI gadgets",
         "2nd": "AI courses"
       },
-      "techstacks": [
-        "Artificial intelligence",
-        "Deep learning"
-      ],
+      "techstacks": ["Artificial intelligence", "Deep learning"],
       "dates": {
         "registrationStart": "2024-07-01",
         "registrationEnd": "2024-07-15",
@@ -799,10 +686,7 @@
         "1st": "Health gadgets",
         "2nd": "Fitness subscriptions"
       },
-      "techstacks": [
-        "Healthcare technology",
-        "Telemedicine"
-      ],
+      "techstacks": ["Healthcare technology", "Telemedicine"],
       "dates": {
         "registrationStart": "2024-09-01",
         "registrationEnd": "2024-09-15",
@@ -827,10 +711,7 @@
         "1st": "Environment-friendly gadgets",
         "2nd": "Green technology courses"
       },
-      "techstacks": [
-        "Environmental science",
-        "Renewable energy"
-      ],
+      "techstacks": ["Environmental science", "Renewable energy"],
       "dates": {
         "registrationStart": "2024-08-01",
         "registrationEnd": "2024-08-15",
@@ -854,10 +735,7 @@
         "1st": "Networking gadgets",
         "2nd": "Technology books"
       },
-      "techstacks": [
-        "Networking",
-        "Cybersecurity"
-      ],
+      "techstacks": ["Networking", "Cybersecurity"],
       "dates": {
         "registrationStart": "2024-02-01",
         "registrationEnd": "2024-02-15",
@@ -879,13 +757,9 @@
       "description": "SKLJLSDMC;LLDCZKKNCSNCSCLMSLCMSLMCLMSL;CMS;LLCM;SLMC;LSM",
       "prizes": {
         "prizePool": 100000,
-        "perks": [
-          "No OtherPerks"
-        ]
+        "perks": ["No OtherPerks"]
       },
-      "techstacks": [
-        "No Restrictions"
-      ],
+      "techstacks": ["No Restrictions"],
       "dates": {
         "registrationStart": "2024-04-10",
         "registrationEnd": "2024-04-11",
@@ -908,13 +782,9 @@
       "description": "SKLJLSDMC;LLDCZKKNCSNCSCLMSLCMSLMCLMSL;CMS;LLCM;SLMC;LSM",
       "prizes": {
         "prizePool": 100000,
-        "perks": [
-          "No OtherPerks"
-        ]
+        "perks": ["No OtherPerks"]
       },
-      "techstacks": [
-        "No Restrictions"
-      ],
+      "techstacks": ["No Restrictions"],
       "dates": {
         "registrationStart": "2024-04-10",
         "registrationEnd": "2024-04-11",
@@ -937,13 +807,9 @@
       "description": "SKLJLSDMC;LLDCZKKNCSNCSCLMSLCMSLMCLMSL;CMS;LLCM;SLMC;LSM",
       "prizes": {
         "prizePool": 100000,
-        "perks": [
-          "No OtherPerks"
-        ]
+        "perks": ["No OtherPerks"]
       },
-      "techstacks": [
-        "No Restrictions"
-      ],
+      "techstacks": ["No Restrictions"],
       "dates": {
         "registrationStart": "2024-04-10",
         "registrationEnd": "2024-04-11",
@@ -966,13 +832,9 @@
       "description": "SKLJLSDMC;LLDCZKKNCSNCSCLMSLCMSLMCLMSL;CMS;LLCM;SLMC;LSM",
       "prizes": {
         "prizePool": 100000,
-        "perks": [
-          "No OtherPerks"
-        ]
+        "perks": ["No OtherPerks"]
       },
-      "techstacks": [
-        "No Restrictions"
-      ],
+      "techstacks": ["No Restrictions"],
       "dates": {
         "registrationStart": "2024-04-10",
         "registrationEnd": "2024-04-11",
@@ -995,13 +857,9 @@
       "description": "SKLJLSDMC;LLDCZKKNCSNCSCLMSLCMSLMCLMSL;CMS;LLCM;SLMC;LSM",
       "prizes": {
         "prizePool": 100000,
-        "perks": [
-          "No OtherPerks"
-        ]
+        "perks": ["No OtherPerks"]
       },
-      "techstacks": [
-        "No Restrictions"
-      ],
+      "techstacks": ["No Restrictions"],
       "dates": {
         "registrationStart": "2024-04-10",
         "registrationEnd": "2024-04-11",
@@ -1024,13 +882,9 @@
       "description": "SKLJLSDMC;LLDCZKKNCSNCSCLMSLCMSLMCLMSL;CMS;LLCM;SLMC;LSM",
       "prizes": {
         "prizePool": 100000,
-        "perks": [
-          "No OtherPerks"
-        ]
+        "perks": ["No OtherPerks"]
       },
-      "techstacks": [
-        "No Restrictions"
-      ],
+      "techstacks": ["No Restrictions"],
       "dates": {
         "registrationStart": "2024-04-10",
         "registrationEnd": "2024-04-11",
@@ -1061,10 +915,7 @@
           "Internship Opportunities"
         ]
       },
-      "techstacks": [
-        "BlockChain",
-        "AI/ML"
-      ],
+      "techstacks": ["BlockChain", "AI/ML"],
       "dates": {
         "registrationStart": "2024-04-11",
         "registrationEnd": "2024-04-12",
@@ -1087,13 +938,9 @@
       "description": "NSALKMLMSD;LDMSDL;MSL;DMSLDM,SNDLSMMDLMSDLMSLDLM;LM",
       "prizes": {
         "prizePool": 100000,
-        "perks": [
-          "No OtherPerks"
-        ]
+        "perks": ["No OtherPerks"]
       },
-      "techstacks": [
-        "No Restrictions"
-      ],
+      "techstacks": ["No Restrictions"],
       "dates": {
         "registrationStart": "2024-04-11",
         "registrationEnd": "2024-04-12",
@@ -1131,11 +978,7 @@
       ],
       "problemStatementAbstract": "Tackling air pollution in urban areas.",
       "solutionStatement": "Our solution monitors air quality and provides personalized recommendations to reduce pollution exposure.",
-      "technologyUsed": [
-        "React Native",
-        "Node.js",
-        "Firebase"
-      ]
+      "technologyUsed": ["React Native", "Node.js", "Firebase"]
     },
     {
       "id": "2",
@@ -1151,11 +994,7 @@
       ],
       "problemStatementAbstract": "Improving road safety through technology.",
       "solutionStatement": "Our solution utilizes AI-powered dashcams to detect and prevent accidents.",
-      "technologyUsed": [
-        "Angular",
-        "Python",
-        "MongoDB"
-      ]
+      "technologyUsed": ["Angular", "Python", "MongoDB"]
     },
     {
       "id": "3",
@@ -1177,11 +1016,7 @@
       ],
       "problemStatementAbstract": "Enhancing agricultural productivity through IoT.",
       "solutionStatement": "Our platform integrates IoT sensors to optimize irrigation and crop management.",
-      "technologyUsed": [
-        "Vue.js",
-        "Firebase",
-        "Express.js"
-      ]
+      "technologyUsed": ["Vue.js", "Firebase", "Express.js"]
     },
     {
       "id": "4",
@@ -1198,9 +1033,7 @@
       ],
       "problemStatementAbstract": "",
       "solutionStatement": "",
-      "technologyUsed": [
-        "BlockChain"
-      ]
+      "technologyUsed": ["BlockChain"]
     },
     {
       "id": "4",
@@ -1217,9 +1050,7 @@
       ],
       "problemStatementAbstract": "",
       "solutionStatement": "",
-      "technologyUsed": [
-        "BlockChain"
-      ]
+      "technologyUsed": ["BlockChain"]
     },
     {
       "id": "5",
@@ -1236,10 +1067,7 @@
       ],
       "problemStatementAbstract": "d;llmd;llem;dlm;llmd;ld;llem;ldmmd;lme;lde;lmdme;lde;ldm",
       "solutionStatement": "",
-      "technologyUsed": [
-        "BlockChain",
-        "No Restrictions"
-      ]
+      "technologyUsed": ["BlockChain", "No Restrictions"]
     },
     {
       "id": 6,
@@ -1335,9 +1163,7 @@
       ],
       "problemStatementAbstract": ".nklnnclkdnclkndlcnlknclknclknslcmslkcmxnclkxnclks",
       "solutionStatement": "",
-      "technologyUsed": [
-        "No Restrictions"
-      ]
+      "technologyUsed": ["No Restrictions"]
     }
   ]
 }

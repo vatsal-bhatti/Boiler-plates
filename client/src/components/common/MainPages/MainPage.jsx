@@ -17,9 +17,7 @@ function MainPage({
   // paginationDataProp,
   pageName,
 }) {
-
-
-  console.log(pageName)
+  console.log(pageName);
   // console.log(paginationDataProp);
   const generalState = useSelector((state) => state.generalReducer);
   const dispatch = useDispatch();
@@ -54,7 +52,6 @@ function MainPage({
     setParticipants(generalState.participants);
     setHosts(generalState.hosts);
     setHackathonsApplications(generalState.hackathonsApplications);
-    
   }, [generalState]);
   console.log(generalState);
 
@@ -62,16 +59,24 @@ function MainPage({
     setUserRole(role);
     setGroupButtonMembers(buttonMembers);
     setActiveButton(currentMember);
-
-    
   }, [buttonMembers, currentMember, role]);
 
   useEffect(() => {
     let newPaginationData;
-  
-    if (pageName === "HackathonsPage" && (activeButton === "OPEN" || activeButton === "CLOSED" || activeButton === "UPCOMING") && hackathons) {
+
+    if (
+      pageName === "HackathonsPage" &&
+      (activeButton === "OPEN" ||
+        activeButton === "CLOSED" ||
+        activeButton === "UPCOMING") &&
+      hackathons
+    ) {
       newPaginationData = hackathons.filter((data) => {
-        if (data.hackathonStatus && typeof data.hackathonStatus === "string" && data.hackathonStatus.toUpperCase() === activeButton.toUpperCase()) {
+        if (
+          data.hackathonStatus &&
+          typeof data.hackathonStatus === "string" &&
+          data.hackathonStatus.toUpperCase() === activeButton.toUpperCase()
+        ) {
           return data;
         }
       });
@@ -80,14 +85,45 @@ function MainPage({
       setPaginationData(hackathons); // Set paginationData to HACKATHONS data
     } else if (pageName === "AdminMainPage" && activeButton === "HOSTS") {
       setPaginationData(hosts); // Set paginationData to HOSTS data
-    } else if (pageName === "AdminMainPage" && activeButton === "PARTICIPANTS") {
+    } else if (
+      pageName === "AdminMainPage" &&
+      activeButton === "PARTICIPANTS"
+    ) {
       setPaginationData(participants); // Set paginationData to PARTICIPANTS data
+    } else if (
+      pageName === "ParticipantMainPage" &&
+      activeButton === "APPLIED HACKATHONS"
+    ) {
+      let participantAppliedHacathons = ["1", "2", "4"];
+
+      const newAppliedHackthons = hackathons.filter(
+        (hackathon) =>
+          participantAppliedHacathons.includes(hackathon.id) &&
+          hackathon.hackathonStatus.toUpperCase() === "OPEN"
+      );
+
+      console.log(newAppliedHackthons);
+
+      setPaginationData(newAppliedHackthons);
+    } else if (
+      pageName === "ParticipantMainPage" &&
+      activeButton === "PAST HACKATHONS"
+    ) {
+      let participantPastHackathons = ["1", "2"];
+
+      const newPastHackthons = hackathons.filter(
+        (hackathon) =>
+        participantPastHackathons.includes(hackathon.id) &&
+          hackathon.hackathonStatus.toUpperCase() === "CLOSED"
+      );
+
+      console.log(newPastHackthons);
+
+      setPaginationData(newPastHackthons);
     }
   }, [activeButton, hackathons, hosts, participants, pageName]);
-  
 
   console.log(activeButton);
-  
 
   return (
     <>
@@ -100,11 +136,8 @@ function MainPage({
           />
         </div>
 
-       
-
         {searchSortFlag ? <SearchSort /> : null}
 
-      
         {/* {pageToLoad(activeButton)} */}
         {/* <AddHackathonForm /> */}
 

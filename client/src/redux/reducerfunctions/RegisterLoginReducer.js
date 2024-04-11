@@ -10,15 +10,19 @@ export function RegisterLoginReducer(state = initialState, action) {
   switch (action.type) {
     case "SET-ROLE":
       const { userDetails, role, isAuth } = action.payload;
+      const newState = {...initialState,role:role,isAuth:isAuth,roleDetails:userDetails}
       localStorage.clear()
-      localStorage.setItem("isAuth", JSON.stringify(true));
-      localStorage.setItem("role", JSON.stringify(role));
-      localStorage.setItem("roleDetails", JSON.stringify(userDetails));
+      localStorage.setItem("userDetails", JSON.stringify(newState));
+
+      // localStorage.setItem("role", JSON.stringify(role));
+      // localStorage.setItem("roleDetails", JSON.stringify(userDetails));
     //   console.log(action.payload);
-const newState = {...initialState,role:role,isAuth:isAuth,roleDetails:userDetails}
+
       return newState ;
 
-
+    case  "SET-LOGOUT" : 
+    localStorage.clear();
+    return initialState;
 
 
     default:

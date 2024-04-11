@@ -2,9 +2,11 @@ import React from "react";
 import Card from "../../common/Card";
 import Animation from "../../common/Animation/Animation";
 import HappeningAnime from "../../../utils/Happeningnowsection/HappeningnowAnime.json"
+import { useNavigate } from "react-router-dom";
 
 function HappeningNow() {
   const cards = [1, 2, 3, 4];
+  const navigate = useNavigate();
 
   return (
     <>
@@ -32,7 +34,7 @@ function HappeningNow() {
           ))}
 
 <div className=" text-xl text-blue-500 font-bold text-center mx-auto    hover:text-gray-700  w-fit  ">
-          <span className="py-1 border-b-4 border-white hover:border-green-500">See all</span> 
+          <span onClick={()=>navigate("/hackathons")} className="py-1 border-b-4 border-white hover:border-green-500">See all</span> 
           </div>
      </div>
           

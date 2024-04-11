@@ -5,10 +5,12 @@ import FemaleAnimation from "../../../utils/Profile Page/Female Avatar.json"
 import HostAnimation from "../../../utils/Profile Page/HostAnimation.json"
 import { Button } from "../Button";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLogout } from "../../../redux/actions/RegisterLoginActions";
 function MainProfilePage({name,tagline,designation,about,role,gender}) {
 
 const navigate = useNavigate();
-
+const dispatch = useDispatch();
 
   return (
     <>
@@ -43,6 +45,7 @@ const navigate = useNavigate();
             </svg>
           </button>
         </div> */}
+
 
 
 <div className="flex flex-col md:flex-row justify-center gap-1 mt-5">
@@ -96,17 +99,36 @@ const navigate = useNavigate();
   {role === "Participant"  && (
     <Button
       variant="green"
-      buttonStyle="m-0 bg-green-500 font-bold py-4"
+      buttonStyle="m-0 bg-green-500 font-bold py-4  "
       onClick={() => navigate(`/ParticipantDashBoard/:participantId`)}
     >
       {role} Dashboard
     </Button>
+
+
+
   )}
+
+<Button onClick={()=>{
+
+  dispatch(setLogout());
+navigate("/");
+
+}}   variant="danger" buttonStyle=" m-0 font-bold py-4 px-14 ">
+Log Out
+</Button>
+
+
 </div>
+
+
+</div>
+
+
 
             </div>
           </div>
-        </div>
+       
       </section>
     </>
   );
