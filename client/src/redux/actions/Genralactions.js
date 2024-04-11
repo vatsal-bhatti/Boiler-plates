@@ -2,6 +2,48 @@ import { getMethod, postMethod } from "../../utils/axiosInstance/axiosInstance";
 import { getUsers } from "../../utils/axiosInstance/axiosInstance";
 
 
+export const formatDate = (dateString) => {
+  const [year, month, day] = dateString.split("-");
+  return `${day}/${month}/${year}`;
+};
+
+
+const getCurrentDate = () => {
+  const now = new Date();
+  return {
+    year: now.getFullYear(),
+    month: now.getMonth() + 1, // Month is zero-based, so we add 1
+    day: now.getDate()
+  };
+};
+
+const compareDates = (dateString, comparisonType) => {
+  const currentDate = getCurrentDate();
+  const givenDate = {
+    year: parseInt(dateString.substring(0, 4)),
+    month: parseInt(dateString.substring(5, 7)),
+    day: parseInt(dateString.substring(8, 10))
+  };
+
+  const currentDateValue = currentDate.year * 10000 + currentDate.month * 100 + currentDate.day;
+  const givenDateValue = givenDate.year * 10000 + givenDate.month * 100 + givenDate.day;
+
+  if (comparisonType === "equal") {
+    return currentDateValue === givenDateValue;
+  } else if (comparisonType === "greaterThan") {
+    return currentDateValue < givenDateValue;
+  } else if (comparisonType === "lessThan") {
+    return currentDateValue > givenDateValue;
+  } else {
+    throw new Error("Invalid comparison type");
+  }
+};
+
+console.log(compareDates("2024-06-03", "greaterThan")); // true
+console.log(compareDates("2024-04-11", "equal")); // true
+
+
+
 
 export function workSuccess(value=false){
   return value;
@@ -60,7 +102,30 @@ export function generalThunkFunction(methodName, data) {
       case "getAllHackathons":
         result = await getUsers("hosts", "http://localhost:8000/hackathons");
         if (result.success) {
-          dispatch(getHackathonsAction(result.data));
+
+console.log(result.data);
+
+
+const newResult = result.data.map((hackathon) => {
+  if (compareDates(hackathon.dates.registrationStart,"equal")) {
+    return { ...hackathon, hackathonStatus: "Open" };
+  } 
+  else if(compareDates(hackathon.dates.registrationStart,"lessThan"))
+  return { ...hackathon, hackathonStatus: "UpComing" };
+  else if(compareDates(hackathon.dates.registrationEnd,"lessThan"))
+  return { ...hackathon, hackathonStatus: "RegistrationClosed" };
+  else if(compareDates(hackathon.dates.hackathonStart,"equal")  || (compareDates(hackathon.dates.hackathonStart,"greaterThan")&& compareDates(hackathon.dates.hackathonEnd,"lessThan")) )
+  return { ...hackathon, hackathonStatus: "Running" };
+  else if(compareDates(hackathon.dates.hackathonEnd,"greaterThan") )
+  return { ...hackathon, hackathonStatus: "Closed" };
+  else {
+    return hackathon; // Return the hackathon object unchanged
+  }
+});
+        console.log(newResult)
+
+
+          dispatch(getHackathonsAction(newResult));
         }
 
         break;
@@ -171,6 +236,10 @@ console.log(data.id);
          
         // }
         break;
+
+
+
+
 
       // if (result.success === true) dispatch(setRole(result.data, role));
 

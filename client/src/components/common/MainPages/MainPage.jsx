@@ -7,8 +7,26 @@ import MainListItem from "./MainListItem";
 import Card from "../Card";
 import RegisterLogin from "../../Login-Register/RegisterLogin";
 import AddHackathonForm from "../../layout/HackathonPages/AddHackathonsForm";
+import { useSelector, useDispatch } from "react-redux";
+import { generalThunkFunction } from "../../../redux/actions/Genralactions";
+import AdminMainPage from "../../layout/AdminPages/AdminMainPage";
+function MainPage({
+  buttonMembers,
+  currentMember,
+  role,
+  // paginationDataProp,
+  pageName,
+}) {
 
-function MainPage({ buttonMembers, currentMember, role }) {
+
+  console.log(pageName)
+  // console.log(paginationDataProp);
+  const generalState = useSelector((state) => state.generalReducer);
+  const dispatch = useDispatch();
+  const [hackathons, setHackathons] = useState([]);
+  const [participants, setParticipants] = useState([]);
+  const [hosts, setHosts] = useState([]);
+  const [hackathonsApplications, setHackathonsApplications] = useState([]);
   const [userRole, setUserRole] = useState(null);
   const [groupButtonMembers, setGroupButtonMembers] = useState([
     "open",
@@ -19,125 +37,57 @@ function MainPage({ buttonMembers, currentMember, role }) {
   const number = Array.from(Array(100).keys())
     .slice(1)
     .map((index) => <Card key={index} tag={activeButton} />);
-  const [paginationData, setPaginationData] = useState(number);
+  const [paginationData, setPaginationData] = useState([]);
   const [searchSortFlag, setSearchSortFlag] = useState(true);
   const [paginationFlag, setPaginationFlag] = useState(true);
+  const [addHackathonFlag, setAddHackathonFlag] = useState(false);
+  const [addUserFlag, setAddUserFlag] = useState(false);
+  useEffect(() => {
+    dispatch(generalThunkFunction("getAllHackathons"));
+    dispatch(generalThunkFunction("getAllParticipants"));
+    dispatch(generalThunkFunction("getAllHosts"));
+    dispatch(generalThunkFunction("getAllHackathonsApplications"));
+  }, []);
+
+  useEffect(() => {
+    setHackathons(generalState.hackathons);
+    setParticipants(generalState.participants);
+    setHosts(generalState.hosts);
+    setHackathonsApplications(generalState.hackathonsApplications);
+    
+  }, [generalState]);
+  console.log(generalState);
 
   useEffect(() => {
     setUserRole(role);
     setGroupButtonMembers(buttonMembers);
     setActiveButton(currentMember);
+
+    
   }, [buttonMembers, currentMember, role]);
+
   useEffect(() => {
-    if (
-      activeButton === "addNewHackathon" ||
-      activeButton === "addNewUser" ||
-      activeButton === "ParticipantProfile" ||
-      activeButton === "HostProfile"
-    ) {
-      setSearchSortFlag(false);
-      setPaginationFlag(false);
-    } else {
-      setSearchSortFlag(true);
-      setPaginationFlag(true);
+    let newPaginationData;
+  
+    if (pageName === "HackathonsPage" && (activeButton === "OPEN" || activeButton === "CLOSED" || activeButton === "UPCOMING") && hackathons) {
+      newPaginationData = hackathons.filter((data) => {
+        if (data.hackathonStatus && typeof data.hackathonStatus === "string" && data.hackathonStatus.toUpperCase() === activeButton.toUpperCase()) {
+          return data;
+        }
+      });
+      setPaginationData(newPaginationData); // Update paginationData with filtered data
+    } else if (pageName === "AdminMainPage" && activeButton === "HACKATHONS") {
+      setPaginationData(hackathons); // Set paginationData to HACKATHONS data
+    } else if (pageName === "AdminMainPage" && activeButton === "HOSTS") {
+      setPaginationData(hosts); // Set paginationData to HOSTS data
+    } else if (pageName === "AdminMainPage" && activeButton === "PARTICIPANTS") {
+      setPaginationData(participants); // Set paginationData to PARTICIPANTS data
     }
-  }, [activeButton]);
+  }, [activeButton, hackathons, hosts, participants, pageName]);
+  
 
   console.log(activeButton);
-  function pageToLoad(buttonName) {
-    switch (buttonName) {
-      case "Hosts": //this Host means hosts list at admin side
-        const listdata = [
-          { title: "Computer Science Engineering", subtitle: 63, mcqs: 20697 },
-          { title: "Mechanical Engineering", subtitle: 48, mcqs: 18222 },
-          { title: "Mechanical Engineering", subtitle: 48, mcqs: 18222 },
-          { title: "Mechanical Engineering", subtitle: 48, mcqs: 18222 },
-          { title: "Mechanical Engineering", subtitle: 48, mcqs: 18222 },
-          { title: "Mechanical Engineering", subtitle: 48, mcqs: 18222 },
-          { title: "Mechanical Engineering", subtitle: 48, mcqs: 18222 },
-          { title: "Mechanical Engineering", subtitle: 48, mcqs: 18222 },
-          { title: "Mechanical Engineering", subtitle: 48, mcqs: 18222 },
-          { title: "Mechanical Engineering", subtitle: 48, mcqs: 18222 },
-          // Add other items here...
-        ];
-
-        return (
-          <>
-            <div className="grid  grid-cols-1 lg:grid-cols-2 w-full gap-6 p-5">
-              {listdata.map((data) => (
-                <>
-                  <MainListItem title={data.title} subtitle={data.subtitle} />
-                </>
-              ))}
-            </div>
-          </>
-        );
-        // setPaginationData(newListData);
-        break;
-      // return (
-      //   <>
-      //     <MainListItem />
-      //   </>
-      // );
-      case "Participant": //this participant means participants list at admin side
-        return (
-          <>
-            <div>Participants List Page</div>
-          </>
-        );
-      case "HostProfile": //this is host profile page at host side
-        return (
-          <>
-            <MainProfilePage
-              name="Host Name"
-              role="host"
-              tagline="Tagline of host"
-              about="about that host content content contentcontent content contentcontent content contentcontent content contentcontent content contentcontent content content"
-            />
-          </>
-        );
-      case "ParticipantProfile": //this is participant profile page at participant side
-        return (
-          <>
-            <MainProfilePage
-              name="Participant Name"
-              role="participant"
-              gender="male"
-              designation="designation (student or developer)"
-              about="about that person content content content"
-            />
-          </>
-        );
-
-      case "participated":
-        return (
-          <>
-            <div>Participant participated Hackathons list</div>
-          </>
-        );
-      case "applied":
-        return (
-          <>
-            <div>Participant applied Hackathons list</div>
-          </>
-        );
-      case "addNewHackathon":
-        return (
-          <>
-            <AddHackathonForm/>
-          </>
-        );
-      case "addNewUser":
-        return (
-          <>
-            <RegisterLogin login={false} />
-          </>
-        );
-
-      default:
-        return null;
-    }
-  }
+  
 
   return (
     <>
@@ -150,16 +100,20 @@ function MainPage({ buttonMembers, currentMember, role }) {
           />
         </div>
 
-        {/* {(userRole === "Admin" || userRole === "Host" || userRole === "ParticipantDashboard") && pageToLoad(activeButton)} */}
+       
 
         {searchSortFlag ? <SearchSort /> : null}
 
-        {pageToLoad(activeButton)}
+      
+        {/* {pageToLoad(activeButton)} */}
+        {/* <AddHackathonForm /> */}
 
         {paginationFlag ? (
           <>
             <div className=" my-10">
               <Pagination
+                pageName={pageName}
+                activeButton={activeButton}
                 data={paginationData}
                 recordsPerPage={10}
                 className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-fit p-5 "

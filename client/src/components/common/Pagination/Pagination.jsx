@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Button } from "../Button";
+import MainListItem from "../MainPages/MainListItem";
 // import { twMerge } from "tailwind-merge";
+import Card from "../Card";
 
-function Pagination({ recordsPerPage, data, className }) {
+function Pagination({ recordsPerPage, data, className, pageName,activeButton}) {
   const [currentPage, setCurrentPage] = useState(1);
 
+  console.log(activeButton)
+console.log(data)
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const lastPage = Math.ceil(data.length / recordsPerPage);
+  const lastPage = data ? Math.ceil(data.length / recordsPerPage) : 0;
+
 const elementsStyle = className;
 
-
+console.log(pageName)
+console.log(activeButton)
   function prevPage() {
     setCurrentPage((currentPage) =>
       currentPage !== 1 ? currentPage - 1 : currentPage
@@ -47,15 +53,19 @@ const elementsStyle = className;
             elementsStyle
           )}
         >
-          {data && data.length ? (
-            data
-              .slice(firstIndex, lastIndex)
-              .map((number, index) => (
-                <div key={index + 1}>{number}</div>
-              ))
-          ) : (
-            <div>no data in children</div>
-          )}
+          {
+  data && data.length ? (
+    data.slice(firstIndex, lastIndex).map((cardData, index) => (
+      pageName === "AdminMainPage" && (activeButton === "HOSTS" || activeButton === "PARTICIPANTS") ? (
+        <MainListItem key={index}  cardData = {cardData} />
+      ) : (
+        <Card key={index} cardData={cardData} />
+      )
+    ))
+  ) : (
+    <div>No data to display</div>
+  )
+}
         </div>
 
         <div className="bg-white p-4  flex  flex-wrap items-center justify-center mt-10 shadow-md shadow-blue-500 rounded-md">
