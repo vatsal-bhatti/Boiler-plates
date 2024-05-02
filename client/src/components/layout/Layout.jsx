@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import Footer from "./Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { setRole } from "../../redux/actions/RegisterLoginActions";
+import { generalThunkFunction } from "../../redux/actions/Genralactions";
 
 function Layout() {
   const [userDetails, setUserDetails] = useState({});
@@ -12,31 +13,35 @@ function Layout() {
   const [roleDetails, setRoleDetails] = useState([]);
 
   const loginState = useSelector((state) => state.registerLoginReducer);
+  const generalState = useSelector((state) => state.generalReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const storedUserDetails =
       JSON.parse(localStorage.getItem("userDetails")) || {};
-    dispatch(
-      setRole(
-        storedUserDetails.roleDetails,
-        storedUserDetails.role,
-        storedUserDetails.isAuth
-      )
-    );
+      dispatch(
+        setRole(
+          storedUserDetails.roleDetails,
+          storedUserDetails.role,
+          storedUserDetails.isAuth
+        )
+      );
+      
+    dispatch(generalThunkFunction("getAllParticipants"));
+    dispatch(generalThunkFunction("getAllHosts"));
+    dispatch(generalThunkFunction("getAllHackathons"));
+    dispatch(generalThunkFunction("getAllHackathonsApplications"));
   }, []);
 
   useEffect(() => {
-    // Retrieve user details from local storage
-
-    setUserDetails(loginState);
-    setIsAuth(loginState.isAuth);
+    setUserDetails( loginState);
+    setIsAuth(true);
     setRole(loginState.role);
     setRoleDetails(loginState.roleDetails);
+
+    console.log(userDetails)
   }, [loginState]);
 
-  // const loginState = useSelector((state) => state.registerLoginReducer);
-  // console.log(loginState);
   console.log(loginState);
   return (
     <div>

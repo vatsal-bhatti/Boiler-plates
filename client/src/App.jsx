@@ -9,12 +9,6 @@ import Loader from "./components/common/Loader";
 function App() {
   const router = Router();
 
-  let email = 'rahul@example.com'; // replace with the email entered by the user
-  let password = 'password123'; // replace with the password entered by the user
-  
-
-  
-
   return (
     <>
       <Suspense fallback={<Loader />}>

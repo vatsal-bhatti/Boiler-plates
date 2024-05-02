@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import LogoImg from "../../../utils/images/Hackfolic.png";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../common/Button";
@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { setRole } from "../../../redux/actions/RegisterLoginActions";
 
 function NavItem({ item, itemBlue, setItemBlue }) {
-  
   return (
     <Link to={item.path}>
       <div
@@ -26,21 +25,17 @@ function NavItem({ item, itemBlue, setItemBlue }) {
 function Navbar() {
   const loginState = useSelector((state) => state.registerLoginReducer);
 
-
-
   const [open, setOpen] = useState(false);
   const [itemBlue, setItemBlue] = useState("Home");
-  const [isAuth,setIsAuth] = useState(false);
-  const [role,setRole] = useState("");
+  const [isAuth, setIsAuth] = useState(false);
+  const [role, setRole] = useState("");
+console.log(isAuth);
+  useEffect(() => {
+    setIsAuth(loginState.isAuth);
+    setRole(loginState.role);
+    console.log(loginState);
+  }, [loginState]);
 
-
-useEffect(()=>{
-
-setIsAuth(loginState.isAuth);
-setRole(loginState.role);
-console.log(loginState)
-},[loginState])
-  
   const navigate = useNavigate();
 
   function toParticipantProfile() {
@@ -61,6 +56,31 @@ console.log(loginState)
     { name: "Hackathons", path: "/hackathons" },
     { name: "ContactUs", path: "#footer" },
   ];
+
+  const handleButtonClick = () => {
+    // e.preventDefault();
+    console.log(isAuth)
+    console.log(role)
+    if (isAuth) {
+    
+      switch (role) {
+        case "host":
+          toHostProfile();
+          break;
+        case "participant":
+          toParticipantProfile();
+          break;
+        case "admin":
+          toAdminProfile();
+          break;
+        default:
+          alert("Unknown role. Please contact support for assistance.");
+      }
+    } else {
+      navigate("/login");
+    }
+  };
+  
   return (
     <>
       <div className="w-full border-2 shadow-md ">
@@ -115,10 +135,13 @@ console.log(loginState)
               ))}
               <Link to="#">
                 <Button
-                  variant="primary"
-                  buttonStyle="w-full px-6 py-2 my-0 me-0 bg-green-500 text-center text-base font-bold text-base border-2 transition-colors duration-100 hover:bg-white hover:text-gray-700 hover:border-gray-300 hover:shadow-xl"
+                  onClick={()=>handleButtonClick()}
+                  variant={isAuth ? "danger" : "green"}
+                  buttonStyle={`w-full px-6 py-2 my-0 me-0 ${
+                    isAuth ? "bg-blue-500" : "bg-green-500"
+                  } text-center text-base font-bold text-base border-2 transition-colors duration-100 hover:bg-white hover:text-gray-700 hover:border-gray-300 hover:shadow-xl`}
                 >
-                  Sign In
+                  {isAuth ? "Profile" : "Sign In"}
                 </Button>
               </Link>
             </div>
@@ -140,27 +163,15 @@ console.log(loginState)
           </div>
 
           <div className="hidden mr-3 space-x-3 lg:flex nav__item">
-            <Link to="#">
-              <Button
-                onClick={
-                  isAuth
-                    ? role === "host"
-                      ? () => toHostProfile()
-                      : role === "participant"
-                      ? () => toParticipantProfile()
-                      : role === "admin"
-                      ? () => toAdminProfile()
-                      : null
-                    : () => navigate("/login")
-                }
-                variant={isAuth ? "danger" : "green"}
-                buttonStyle={`px-6 py-2 mb-0  ${
-                  isAuth ? "bg-blue-500" : "bg-green-500"
-                }  font-bold text-base border-2 transition-colors duration-100 hover:bg-white hover:text-gray-700 hover:border-blue-500 hover:shadow-xl`}
-              >
-                {isAuth ? "Profile" : "Sign In"}
-              </Button>
-            </Link>
+            <Button
+              onClick={()=>handleButtonClick()}
+              variant={isAuth ? "danger" : "green"}
+              buttonStyle={`px-6 py-2 mb-0  ${
+                isAuth ? "bg-blue-500" : "bg-green-500"
+              }  font-bold text-base border-2 transition-colors duration-100 hover:bg-white hover:text-gray-700 hover:border-blue-500 hover:shadow-xl`}
+            >
+              {isAuth ? "Profile" : "Sign In"}
+            </Button>
           </div>
         </nav>
       </div>

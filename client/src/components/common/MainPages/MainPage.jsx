@@ -20,6 +20,8 @@ function MainPage({
   console.log(pageName);
   // console.log(paginationDataProp);
   const generalState = useSelector((state) => state.generalReducer);
+  const loginState = useSelector((state) => state.registerLoginReducer);
+  console.log(loginState);
   const dispatch = useDispatch();
   const [hackathons, setHackathons] = useState([]);
   const [participants, setParticipants] = useState([]);
@@ -32,29 +34,30 @@ function MainPage({
     "upComing",
   ]);
   const [activeButton, setActiveButton] = useState("open");
-  const number = Array.from(Array(100).keys())
-    .slice(1)
-    .map((index) => <Card key={index} tag={activeButton} />);
   const [paginationData, setPaginationData] = useState([]);
   const [searchSortFlag, setSearchSortFlag] = useState(true);
   const [paginationFlag, setPaginationFlag] = useState(true);
-  const [addHackathonFlag, setAddHackathonFlag] = useState(false);
-  const [addUserFlag, setAddUserFlag] = useState(false);
+  const [updateFlag,setUpdateFlag] = useState(false);
+
+  function handleUpdateFlag () {
+    setUpdateFlag(!updateFlag);
+  }
   useEffect(() => {
     dispatch(generalThunkFunction("getAllHackathons"));
     dispatch(generalThunkFunction("getAllParticipants"));
     dispatch(generalThunkFunction("getAllHosts"));
     dispatch(generalThunkFunction("getAllHackathonsApplications"));
-  }, []);
+  }, [updateFlag]);
 
   useEffect(() => {
     setHackathons(generalState.hackathons);
     setParticipants(generalState.participants);
     setHosts(generalState.hosts);
-    setHackathonsApplications(generalState.hackathonsApplications);
+    setHackathonsApplications(generalState.hackathonApplications);
+  
   }, [generalState]);
   console.log(generalState);
-
+  console.log(hackathonsApplications);
   useEffect(() => {
     setUserRole(role);
     setGroupButtonMembers(buttonMembers);
@@ -89,6 +92,7 @@ function MainPage({
       pageName === "AdminMainPage" &&
       activeButton === "PARTICIPANTS"
     ) {
+      console.log(participants)
       setPaginationData(participants); // Set paginationData to PARTICIPANTS data
     } else if (
       pageName === "ParticipantMainPage" &&
@@ -113,13 +117,108 @@ function MainPage({
 
       const newPastHackthons = hackathons.filter(
         (hackathon) =>
-        participantPastHackathons.includes(hackathon.id) &&
+          participantPastHackathons.includes(hackathon.id) &&
           hackathon.hackathonStatus.toUpperCase() === "CLOSED"
       );
 
       console.log(newPastHackthons);
 
       setPaginationData(newPastHackthons);
+    } else if (pageName === "HostMainPage" && activeButton === "OPEN") {
+      if (
+        loginState &&
+        loginState.roleDetails &&
+        loginState.roleDetails.length > 0
+      ) {
+        const allHostHackathonIDs = loginState.roleDetails[0].hackathons;
+
+        const hostOpenHackathons = hackathons.filter((hackathon) => {
+          if (
+            allHostHackathonIDs.includes(parseInt(hackathon.id)) &&
+            hackathon.hackathonStatus.toUpperCase() === "OPEN"
+          ) {
+            return hackathon;
+          }
+        });
+
+        console.log(hostOpenHackathons);
+        setPaginationData(hostOpenHackathons);
+      }
+    } else if (pageName === "HostMainPage" && activeButton === "CLOSED") {
+      if (
+        loginState &&
+        loginState.roleDetails &&
+        loginState.roleDetails.length > 0
+      ) {
+        const allHostHackathonIDs = loginState.roleDetails[0].hackathons;
+
+        const hostClosedHackathons = hackathons.filter((hackathon) => {
+          if (
+            allHostHackathonIDs.includes(parseInt(hackathon.id)) &&
+            hackathon.hackathonStatus.toUpperCase() === "CLOSED"
+          ) {
+            return hackathon;
+          }
+        });
+
+        console.log(hostClosedHackathons);
+        setPaginationData(hostClosedHackathons);
+      }
+    } else if (pageName === "HostMainPage" && activeButton === "UPCOMING") {
+      if (
+        loginState &&
+        loginState.roleDetails &&
+        loginState.roleDetails.length > 0
+      ) {
+        const allHostHackathonIDs = loginState.roleDetails[0].hackathons;
+
+        const hostUpcomingHackathons = hackathons.filter((hackathon) => {
+          if (
+            allHostHackathonIDs.includes(parseInt(hackathon.id)) &&
+            hackathon.hackathonStatus.toUpperCase() === "UPCOMING"
+          ) {
+            return hackathon;
+          }
+        });
+
+        console.log(hostUpcomingHackathons);
+        setPaginationData(hostUpcomingHackathons);
+      }
+    } else if (
+      pageName === "HostApplicationsPage" &&
+      activeButton === "PENDING"
+    ) {
+      const allHostHackathonIDs = loginState.roleDetails[0].hackathons;
+     
+      const hostAllApplications = hackathonsApplications.filter(
+        (application) => {
+          if (
+            allHostHackathonIDs.includes(parseInt(application.hackathonId)) &&
+            application.applicationStatus.toUpperCase() === "PENDING"
+          ) {
+            return application;
+          }
+        }
+      );
+      setPaginationData(hostAllApplications);
+    }
+    else if (
+      pageName === "HostApplicationsPage" &&
+      activeButton === "ACCEPTED"
+    ) {
+      const allHostHackathonIDs = loginState.roleDetails[0].hackathons;
+     
+      const hostAllApplications = hackathonsApplications.filter(
+        (application) => {
+          if (
+            allHostHackathonIDs.includes(parseInt(application.hackathonId)) &&
+            application.applicationStatus.toUpperCase() === "ACCEPTED"
+          ) {
+            return application;
+          }
+        }
+      );
+      setPaginationData(hostAllApplications);
     }
   }, [activeButton, hackathons, hosts, participants, pageName]);
 
@@ -145,6 +244,7 @@ function MainPage({
           <>
             <div className=" my-10">
               <Pagination
+              handleUpdateFlag={handleUpdateFlag}
                 pageName={pageName}
                 activeButton={activeButton}
                 data={paginationData}

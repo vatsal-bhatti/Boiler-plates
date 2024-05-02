@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 // import ViewDetailsPage from "../components/layout/HackathonPages/ViewDetailsPage";
@@ -14,11 +14,14 @@ import PrivateRoute from "./PrivateRoutes/PrivateRoute";
 // import Home from "../components/Home";
 // import Layout from "../components/layout/Layout";
 // import MainProfilePage from "../components/common/MainPages/MainProfilePage";
+// import TeamViewDetails from "../components/layout/HostPages/TeamViewDetails";
 
-const useDetails = JSON.parse(localStorage.getItem("userDetails")) || [];
-const role = useDetails?.role;
-const isAuth = useDetails?.isAuth;
-const roleDetails = useDetails?.roleDetails;
+// const useDetails = JSON.parse(localStorage.getItem("userDetails")) || [];
+// const role = useDetails?.role;
+// const isAuth = useDetails?.isAuth;
+// const roleDetails = useDetails?.roleDetails;
+
+// console.log(useDetails);
 
 const Error404 = React.lazy(() => import("../components/Error404"));
 const Layout = React.lazy(() => import("../components/layout/Layout"));
@@ -52,9 +55,21 @@ const MainPage = React.lazy(() =>
 const AddHackathonForm = React.lazy(() =>
   import("../components/layout/HackathonPages/AddHackathonsForm")
 );
+const TeamViewDetails = React.lazy(() =>
+  import("../components/layout/HostPages/TeamViewDetails")
+);
 function Router() {
   // const condition = false;
   const loginState = useSelector((state) => state.registerLoginReducer);
+  const dispatch = useDispatch();
+  console.log(loginState);
+  console.log(loginState.role);
+  const [dummyLoginState, setDummyLoginState] = useState({});
+  useEffect(() => {
+    setDummyLoginState(loginState);
+  }, [loginState]);
+
+  console.log(dummyLoginState);
   return createBrowserRouter([
     {
       path: "*",
@@ -66,6 +81,29 @@ function Router() {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/AdminProfile",
+          element: (
+            <MainProfilePage
+              name="Admin "
+              role="Admin"
+              tagline="Admin is God"
+              about="about that host content content contentcontent content contentcontent content contentcontent content contentcontent content contentcontent content content"
+            />
+          ),
+        },
+
+        {
+          path: "/AdminDashBoard",
+          element: (
+            <MainPage
+              role="admin"
+              pageName="AdminMainPage"
+              buttonMembers={["HACKATHONS", "HOSTS", "PARTICIPANTS"]}
+              currentMember="HACKATHONS"
+            />
+          ),
         },
         {
           path: "/login",
@@ -86,30 +124,64 @@ function Router() {
             />
           ),
         },
+        {
+          path: "/viewDetailPage/:hackathonId",
+          element: <ViewDetailsPage />,
+        },
 
         {
           element: (
-            <PrivateRoute isAuth={role === "participant" ? true : false} />
+            <PrivateRoute
+              isAuth={dummyLoginState.role === "participant" ? true : false}
+            />
           ),
           children: [
             {
-              path: "/viewDetailPage/:hackathonId",
-              element: <ViewDetailsPage />,
-            },
-
-            {
-              path: "/applyNow/:hackathonId",
+              path: "/applyNow/:hackathonId/:hackathonName",
               element: <ApplyNow />,
             },
             {
               path: "/ParticipantProfile",
               element: (
                 <MainProfilePage
-                  name="Participant Name"
-                  role="Participant"
-                  gender="male"
-                  designation="designation (student or developer)"
-                  about="about that person content content content"
+                  name={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0
+                      ? loginState.roleDetails[0].firstName
+                      : ""
+                  }
+                  role={loginState ? loginState.role : "participant"}
+                  gender={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0
+                      ? loginState.roleDetails[0].gender
+                      : "male"
+                  }
+                  email={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0
+                      ? loginState.roleDetails[0].email
+                      : "No Email Provided"
+                  }
+                  designation={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0 &&
+                    loginState.roleDetails[0].designation
+                      ? loginState.roleDetails[0].designation
+                      : "Not Defined"
+                  }
+                  about={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0 &&
+                    loginState.roleDetails[0].about
+                      ? loginState.roleDetails[0].about
+                      : "No Details"
+                  }
                 />
               ),
             },
@@ -118,8 +190,15 @@ function Router() {
               path: "/ParticipantDashBoard/:participantId",
               element: (
                 <MainPage
-                  role="Host"
-                  ParticipantId="1"
+                  role="Participant"
+                  ParticipantId={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0 &&
+                    loginState.roleDetails[0].id
+                      ? loginState.roleDetails[0].id
+                      : "1"
+                  }
                   pageName="ParticipantMainPage"
                   buttonMembers={["APPLIED HACKATHONS", "PAST HACKATHONS"]}
                   currentMember={"APPLIED HACKATHONS"}
@@ -129,11 +208,15 @@ function Router() {
           ],
         },
         {
-          element: <PrivateRoute isAuth={role === "host" ? true : false} />,
+          element: (
+            <PrivateRoute
+              isAuth={dummyLoginState.role === "host" ? true : false}
+            />
+          ),
           children: [
             {
-              path: "/viewDetailPage/:hackathonId",
-              element: <ViewDetailsPage />,
+              path: "/teamViewDetailPage/:applicationId",
+              element: <TeamViewDetails />,
             },
 
             {
@@ -144,28 +227,85 @@ function Router() {
               path: "/HostProfile",
               element: (
                 <MainProfilePage
-                  name="Host Name"
-                  role="Host"
-                  tagline="Tagline of host"
-                  about="about that host content content contentcontent content contentcontent content contentcontent content contentcontent content contentcontent content content"
+                  id={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0
+                      ? loginState.roleDetails[0].id
+                      : "1"
+                  }
+                  name={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0
+                      ? loginState.roleDetails[0].firstName
+                      : ""
+                  }
+                  role={loginState ? loginState.role : "host"}
+                  email={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0
+                      ? loginState.roleDetails[0].email
+                      : "No Email Provided"
+                  }
+                  about={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0 &&
+                    loginState.roleDetails[0].description
+                      ? loginState.roleDetails[0].description
+                      : "No Details"
+                  }
                 />
               ),
             },
-
             {
               path: "/HostDashBoard/:hostId",
               element: (
                 <MainPage
+                  ParticipantId={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0 &&
+                    loginState.roleDetails[0].id
+                      ? loginState.roleDetails[0].id
+                      : "1"
+                  }
                   role="host"
+                  pageName="HostMainPage"
                   buttonMembers={["OPEN", "CLOSED", "UPCOMING"]}
                   currentMember="OPEN"
+                />
+              ),
+            },
+            {
+              path: "/HostApplicationsDashBoard/:hostId",
+              element: (
+                <MainPage
+                  ParticipantId={
+                    loginState &&
+                    loginState.roleDetails &&
+                    loginState.roleDetails.length > 0 &&
+                    loginState.roleDetails[0].id
+                      ? loginState.roleDetails[0].id
+                      : "1"
+                  }
+                  role="host"
+                  pageName="HostApplicationsPage"
+                  buttonMembers={["PENDING", "ACCEPTED"]}
+                  currentMember="PENDING"
                 />
               ),
             },
           ],
         },
         {
-          element: <PrivateRoute isAuth={role === "admin" ? true : false} />,
+          element: (
+            <PrivateRoute
+              isAuth={dummyLoginState.role === "admin" ? true : false}
+            />
+          ),
           children: [
             {
               path: "/addNewUser",
@@ -176,10 +316,10 @@ function Router() {
               element: <AddHackathonForm />,
             },
 
-            {
-              path: "/viewDetailPage/:hackathonId",
-              element: <ViewDetailsPage />,
-            },
+            // {
+            //   path: "/viewDetailPage/:hackathonId",
+            //   element: <ViewDetailsPage />,
+            // },
 
             {
               path: "/HostProfile",
@@ -229,29 +369,29 @@ function Router() {
               ),
             },
 
-            {
-              path: "/AdminProfile",
-              element: (
-                <MainProfilePage
-                  name="Admin "
-                  role="Admin"
-                  tagline="Admin is God"
-                  about="about that host content content contentcontent content contentcontent content contentcontent content contentcontent content contentcontent content content"
-                />
-              ),
-            },
+            // {
+            //   path: "/AdminProfile",
+            //   element: (
+            //     <MainProfilePage
+            //       name="Admin "
+            //       role="Admin"
+            //       tagline="Admin is God"
+            //       about="about that host content content contentcontent content contentcontent content contentcontent content contentcontent content contentcontent content content"
+            //     />
+            //   ),
+            // },
 
-            {
-              path: "/AdminDashBoard",
-              element: (
-                <MainPage
-                  role="admin"
-                  pageName="AdminMainPage"
-                  buttonMembers={["HACKATHONS", "HOSTS", "PARTICIPANTS"]}
-                  currentMember="HACKATHONS"
-                />
-              ),
-            },
+            // {
+            //   path: "/AdminDashBoard",
+            //   element: (
+            //     <MainPage
+            //       role="admin"
+            //       pageName="AdminMainPage"
+            //       buttonMembers={["HACKATHONS", "HOSTS", "PARTICIPANTS"]}
+            //       currentMember="HACKATHONS"
+            //     />
+            //   ),
+            // },
           ],
         },
       ],

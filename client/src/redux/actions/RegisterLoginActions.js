@@ -10,7 +10,7 @@ export function registrationSuccess(value=false){
 export function setRole(userDetails, role, isAuth) {
   return {
     type: "SET-ROLE",
-    payload: { userDetails: userDetails, role: role, isAuth: true
+    payload: { userDetails: userDetails, role: role, isAuth: isAuth
      },
   };
 }
@@ -48,9 +48,16 @@ export function thunkFunction(methodName, data) {
             result = await getMethod(
               `http://localhost:8000/hosts?email=${email}&password=${password}&roles[0]=${role}`
             );
+            else if (role === "admin")
+            result = await getMethod(
+              `http://localhost:8000/admin?email=${email}&password=${password}&roles[0]=${role}`
+            );
           // Dispatch an action based on the result if needed
 
-          if (result.success === true) {dispatch(setRole(result.data, role))
+          if (result.success === true) {
+            
+            console.log(role)
+            dispatch(setRole(result.data, role,true))
             registrationSuccess(true);
         };
         }

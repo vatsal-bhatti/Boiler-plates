@@ -168,6 +168,8 @@ export function generalThunkFunction(methodName, data) {
           "hackathonApplications",
           "http://localhost:8000/hackathonApplications"
         );
+
+        console.log(result)
         if (result.success) {
           dispatch(getHackathonsApplicationsAction(result.data));
         }
@@ -175,32 +177,7 @@ export function generalThunkFunction(methodName, data) {
         break;
 
       case "AddNewHackathon":
-        //   "id": "1",
-        //   "hackathonStatus": "upcoming",
-        //   "hostId": 1,
-        //   "name": "Innovate-a-thon",
-        //   "tagline": "Unleash Innovation, Create Change",
-        //   "description": "Join us for an exciting hackathon where ideas turn into reality. Get ready to innovate, collaborate, and make a difference.",
-        //   "prize": {
-        //     "1st": "Cash prize",
-        //     "2nd": "Gift vouchers"
-        //   },
-        //   "techstacks": [
-        //     "Web development",
-        //     "Machine learning"
-        //   ],
-        //   "dates": {
-        //     "registrationStart": "2024-05-01",
-        //     "registrationEnd": "2024-05-15",
-        //     "hackathonStart": "2024-06-01",
-        //     "hackathonEnd": "2024-06-03"
-        //   },
-        //   "teamSize": {
-        //     "max": 4,
-        //     "min": 1
-        //   },
-        //   "mode": "online"
-        // },
+       
 console.log(data.id);
         const newHackathonDetails = {
           id: data.id,
@@ -249,9 +226,10 @@ console.log(data.id);
           
             id: data.id,
             hackathonId: data.hackathonId,
-            hackathonName: data.hackathonId,
+            hackathonName: data.hackathonName,
             applicationStatus: "pending",
             leaderId: data.leaderId,
+            leadeName:data.name,
             teamDetails:data.teamDetails,
             problemStatementAbstract: data.problemStatementAbstract,
             solutionStatement: "",

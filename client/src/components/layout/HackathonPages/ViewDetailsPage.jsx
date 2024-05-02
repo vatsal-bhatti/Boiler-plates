@@ -169,11 +169,20 @@ detail = [
               </p>
             </div>
             <DetailsBlock details={detail} />
-            <div className=" ml-[75px]  md:mx-auto my-10  w-fit">
-              <Button onClick={()=>navigate(`/applyNow/${hackathonId}`)} variant="primary" buttonStyle="m-0 bg-blue-500 font-bold py-4  px-6">
-                Apply Now
-              </Button>
-            </div>
+
+            {hackathonDetails && hackathonDetails.hackathonStatus && hackathonDetails.hackathonStatus.toUpperCase() === "UPCOMING" ? null : (
+  <div className="ml-[75px] md:mx-auto my-10 w-fit">
+    <Button
+      onClick={() => navigate(`/applyNow/${hackathonId}`)}
+      variant="primary"
+      buttonStyle="m-0 bg-blue-500 font-bold py-4 px-6"
+    >
+      {hackathonDetails && hackathonDetails.hackathonStatus && hackathonDetails.hackathonStatus.toUpperCase() === "CLOSED"
+        ? "See Projects"
+        : "Apply Now"}
+    </Button>
+  </div>
+)}
           </div>
         </div>
       </div>

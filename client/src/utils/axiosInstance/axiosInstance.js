@@ -64,3 +64,63 @@ export const getUsers = async (userType,endpoint) => {
     };
   }
 };
+
+export const getApplication = async (endpoint) => {
+  try {
+    const res = await API.get(endpoint);
+    console.log(res)
+    console.log(res.data)
+ return {
+  success: true,
+  data: res.data,
+  error: null,
+}
+   
+  } catch (error) {
+    return {
+      success: false,
+      data: null, // Set data to null in case of error
+      error: `data not found`,
+    };
+  }
+};
+
+export const updateApplication = async (endpoint,data) => {
+  try {
+    const res = await API.patch(endpoint,data);
+    console.log(res)
+    console.log(res.data)
+ return {
+  success: true,
+  data: res.data,
+  error: null,
+}
+   
+  } catch (error) {
+    return {
+      success: false,
+      data: null, // Set data to null in case of error
+      error: `data not found`,
+    };
+  }
+};
+
+export const deleteUser = async (endpoint) => {
+  try {
+    const res = await API.delete(endpoint);
+    console.log(res)
+    console.log(res.data)
+ return {
+  success: true,
+  data: res.data,
+  error: null,
+}
+   
+  } catch (error) {
+    return {
+      success: false,
+      data: null, // Set data to null in case of error
+      error: `data not found`,
+    };
+  }
+};

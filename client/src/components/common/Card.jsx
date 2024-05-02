@@ -1,16 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { formatDate } from "../../redux/actions/Genralactions";
 
-function Card({ cardData }) {
+function Card({ cardData, pageName }) {
   const generalState = useSelector((state) => state.generalReducer);
-  console.log(cardData);
+  const loginState = useSelector((state) => state.registerLoginReducer);
+  console.log(loginState);
+  console.log(generalState);
+  // console.log(cardData);
+  // const [applicationStatus, setApplicationStatus] = useState("");
+//   if (
+//     pageName === "ParticipantMainPage" &&
+//     generalState &&
+//     generalState.hackathonApplications &&
+//     generalState.hackathonApplications.length > 0 &&
+//     loginState &&
+//     loginState.roleDetails &&
+//     loginState.roleDetails.length > 0
+//   ) {
+//     const LeaderId = loginState.roleDetails[0].id;
+//     console.log(LeaderId)
+//     const hackathonStatus = generalState.hackathonApplications.filter(
+//       (application) => {
+//         console.log(application)
+//         console.log(application.id)
+//         console.log(cardData.id)
+// console.log(application.leaderId)
+
+// console.log(LeaderId)
+// console.log(parseInt(application.leaderId) === parseInt(LeaderId))
+//         if (
+//           parseInt(application.hackathonId) === parseInt(cardData.id) &&
+//           parseInt(application.leaderId) === parseInt(LeaderId)
+//         ) {
+//           console.log(application.applicationStatus)
+//         }
+//       }
+//     );
+//     console.log(hackathonStatus)
+//   //  setApplicationStatus(hackathonStatus)
+//   }
+
 
   const navigate = useNavigate();
   let participantPastHackathons = ["2"];
   let participantAppliedHacathons = ["4"];
+  
   let themeArray = cardData && cardData.techstacks ? cardData.techstacks : [];
 
   themeArray = themeArray.map((theme) => {
@@ -44,7 +81,9 @@ function Card({ cardData }) {
               <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
             </svg>
             <h3 className="my-2 ml-3 text-2xl font-extrabold text-gray-800">
-              {cardData ? cardData.name : "Hackathon Name"}
+              {cardData
+                ? `${cardData.name} `
+                : "Hackathon Name"}
             </h3>
           </div>
 
@@ -125,53 +164,72 @@ function Card({ cardData }) {
             </div>
           </div>
           <div className="w-full flex items-center justify-center gap-x-7">
-          {cardData && (
-  <div className="w-full flex items-center justify-center gap-x-7">
-    {cardData.hackathonStatus &&
-      (cardData.hackathonStatus.toUpperCase() === "OPEN" ||
-        cardData.hackathonStatus.toUpperCase() === "CLOSED") ? (<>
-        
-        
-
-      <Button
-        onClick={() => navigate(`/applyNow/${cardData.id}`)}
-        variant="primary"
-        buttonStyle="m-0 bg-blue-500 font-bold py-4 px-6"
-      >
-        {cardData.hackathonStatus.toUpperCase() === "OPEN" ||
-        !participantPastHackathons.includes(cardData.id)
-          ? "Apply Now"
-          : "See Projects"}
-      </Button>
-        
-        </>
-         
-    ) : null}
-
-    {participantAppliedHacathons.includes(cardData.id) ||cardData.hackathonStatus.toUpperCase() === "OPEN" ? (
-      <Button
-        variant="green"
-        buttonStyle="m-0 bg-green-500 font-bold py-4 px-6"
-        onClick={() => navigate(`/viewDetailPage/${cardData.id}`)}
-      >
-        View Details
-      </Button>
-    ) : participantPastHackathons.includes(cardData.id) ? (<>
-    
-    <Button
-      variant="green"
-      buttonStyle="m-0 bg-green-500 font-bold py-4 px-6"
-      onClick={() => navigate(`/viewDetailPage/${cardData.id}`)}
-    >
-      View Details
-    </Button>
-     
-    
-    </>
-     
-    ) : null}
-  </div>
-)}
+            {cardData && (
+              <div className="w-full flex items-center justify-center gap-x-7">
+                {cardData.hackathonStatus &&
+                pageName !== "HostMainPage" &&
+                (cardData.hackathonStatus.toUpperCase() === "OPEN" ||
+                  cardData.hackathonStatus.toUpperCase() === "CLOSED") ? (
+                  <>
+                    <Button
+                      onClick={() => {
+                        if (
+                          pageName === "ParticipantMainPage" ||
+                          pageName === "HackathonsPage" || pageName === "HappeningNowPage"
+                        ) {
+                          navigate(`/applyNow/${cardData.id}/${cardData.name}`);
+                        }
+                      }}
+                      variant="primary"
+                      buttonStyle="m-0 bg-blue-500 font-bold py-4 px-6"
+                    >
+                      {cardData.hackathonStatus.toUpperCase() === "OPEN" ||
+                      !participantPastHackathons.includes(cardData.id)
+                        ? "Apply Now"
+                        : "See Projects"}
+                    </Button>
+                  </>
+                ) : pageName !== "HostMainPage" ||
+                  participantAppliedHacathons.includes(
+                    cardData.id
+                  ) ? null : null}
+                <Button
+                  variant="green"
+                  buttonStyle="m-0 bg-green-500 font-bold py-4 px-6"
+                  onClick={() => {
+                    // console.log(cardData.name)
+                    navigate(`/viewDetailPage/${cardData.id}`);
+                  }}
+                >
+                  View Details
+                </Button>
+                {/* {participantAppliedHacathons.includes(cardData.id) ||
+                cardData.hackathonStatus.toUpperCase() === "OPEN" ||
+                cardData.hackathonStatus.toUpperCase() === "UPCOMING" ||
+                pageName === "HostApplicationsPage" ? (
+                  <Button
+                    variant="green"
+                    buttonStyle="m-0 bg-green-500 font-bold py-4 px-6"
+                    onClick={() => navigate(`/viewDetailPage/${cardData.id}`)}
+                  >
+                    View Details
+                  </Button>
+                ) : participantPastHackathons.includes(cardData.id) ? (
+                  <>
+                    <Button
+                      variant="green"
+                      buttonStyle="m-0 bg-green-500 font-bold py-4 px-6"
+                      onClick={() => {
+                        // console.log(cardData.name)
+                        navigate(`/viewDetailPage/${cardData.id}`);
+                      }}
+                    >
+                      View Details
+                    </Button>
+                  </>
+                ) : null} */}
+              </div>
+            )}
           </div>
         </div>
       </div>

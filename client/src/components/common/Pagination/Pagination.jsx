@@ -5,8 +5,9 @@ import MainListItem from "../MainPages/MainListItem";
 // import { twMerge } from "tailwind-merge";
 import Card from "../Card";
 
-function Pagination({ recordsPerPage, data, className, pageName,activeButton}) {
+function Pagination({ recordsPerPage, data, className, pageName,activeButton,handleUpdateFlag}) {
   const [currentPage, setCurrentPage] = useState(1);
+ 
 
   console.log(activeButton)
 console.log(data)
@@ -53,19 +54,21 @@ console.log(activeButton)
             elementsStyle
           )}
         >
-          {
+        {
   data && data.length ? (
     data.slice(firstIndex, lastIndex).map((cardData, index) => (
-      pageName === "AdminMainPage" && (activeButton === "HOSTS" || activeButton === "PARTICIPANTS") ? (
-        <MainListItem key={index}  cardData = {cardData} />
+      (pageName === "AdminMainPage" && (activeButton === "HOSTS" || activeButton === "PARTICIPANTS")) || 
+      (pageName === "HostApplicationsPage" && (activeButton === "PENDING" || activeButton === "ACCEPTED")) ? (
+        <MainListItem key={index} cardData={cardData} pageName={pageName} handleUpdateFlag={handleUpdateFlag}/>
       ) : (
-        <Card key={index} cardData={cardData} />
+        <Card key={index} cardData={cardData} pageName={pageName} handleUpdateFlag={handleUpdateFlag} />
       )
     ))
   ) : (
     <div>No data to display</div>
   )
 }
+
         </div>
 
         <div className="bg-white p-4  flex  flex-wrap items-center justify-center mt-10 shadow-md shadow-blue-500 rounded-md">

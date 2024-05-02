@@ -276,7 +276,7 @@ function RegisterLogin({ login }) {
                       thunkFunction("Login", {
                         email: values.Email,
                         password: values.Password,
-                        role: values.Role,
+                        role: values.Role.toLowerCase(),
                       })
                     );
                     if(()=>registrationSuccess()){
